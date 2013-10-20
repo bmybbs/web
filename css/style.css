@@ -1,4 +1,63 @@
-/* Put your CSS here */
-html, body {
-    margin: 20px;
+html {
+	min-width: 1200px;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+#sidebar-left {
+	padding: 0px !important;
+	height: 100%;
+	position: fixed;
+	background: #444444;
+	width: 200px !important;
+	float: left;
+}
+
+#sidebar-left header {
+	margin-top: 30px;
+	margin-bottom: 12px;
+	height: 80px;
+	background: #666666;
+}
+
+#sidebar-left ul.nav {
+	border: none !important;s
+}
+
+#sidebar-left a {
+	color: #fff;
+	padding-left: 30px;
+}
+
+#sidebar-left ul.nav li > a:hover {
+	background: #000;
+	border: none;
+}
+
+#sidebar-left ul.nav li {
+	height: 42px;
+	line-height: 42px;
+	font-size: 16px;
+	display: block;
+	font-weight: lighter;
+}
+
+#content {
+	margin-left: 200px;
+	padding: 0px;
+	height: 100%;
+	float: left;
+	width: 100%;
+}
+
+#content header #ps-info {
+	height: 30px;
+}
+
+#content header #ads {
+	height: 80px;
+	background: #EEEEEE;
 }

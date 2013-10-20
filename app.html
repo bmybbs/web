@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bmy</title>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+
+		<script type="text/x-handlebars">
+			<div class="container-fluid-full">
+				<div class="row-fluid">
+					<section id="sidebar-left">
+						<div class="nav-collapse sidebar-nav">
+							<header>
+								<div id="bmy-logo"></div>
+							</header>
+							<ul class="nav nav-tabs nav-stacked main-menu">
+								<li><a href="#">兵马俑导读</a></li>
+								<li><a href="#">热门话题页</a></li>
+								<li><a href="#">预定版面</a></li>
+								<li><a href="#">分类讨论区</a></li>
+							</ul>
+							<div id="brd-jmp-box">
+							</div>
+						</div>
+					</section>
+
+					<section id="content">
+						<header>
+							<div id="ps-info"></div>
+							<div id="ads"></div>
+						</header>
+						<div id="container">
+							{{outlet}}
+						</div>
+					</section>
+				</div>
+			</div>
+		</script>
+
+		<script src="js/libs/jquery-1.9.1.js"></script>
+		<script src="js/libs/handlebars-1.0.0.js"></script>
+		<script src="js/libs/ember-1.0.0.js"></script>
+		<script src="js/libs/bootstrap.min.js"></script>
+		<script src="js/app.js"></script>
+
+	</body>
+</html>
