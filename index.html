@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>new bmy</title>
+		<meta charset="utf-8">
+		<link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="content">
+				<div class="row">
+					<div id="login-form" class="hidden">
+						<h2>Login</h2>
+						<div class="clearfix">
+							<input id="username" type="text" placeholder="用户名">
+						</div>
+						<div class="clearfix">
+							<input id="password" type="password" placeholder="密码">
+						</div>
+						<div class="checkbox">
+							<label><input id="chk_remember" type="checkbox">记住我</label>
+						</div>
+						<button id="btn-login" class="btn btn-primary" type="submit">登录</button>
+					</div>
+					<div id="direct-login" class="hidden">
+						<button id="btn-direct-login" class="btn btn-primary" type="submit">登录</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/libs/jquery-1.9.1.js"></script>
+		<script src="js/libs/jquery.cookie.js"></script>
+		<script src="js/login.js"></script>
+	</body>
+</html>
