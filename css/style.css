@@ -7,6 +7,10 @@ body {
 	height: 100%;
 }
 
+.hidden {
+	display: none;
+}
+
 #sidebar-left {
 	padding: 0px !important;
 	height: 100%;
