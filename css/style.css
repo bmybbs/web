@@ -242,3 +242,9 @@ body {
 #postlist-paging form button {
 	height: 23px;
 }
+
+.row-fluid {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+}
