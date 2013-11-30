@@ -10,9 +10,16 @@
 	<body>
 
 		<script type="text/x-handlebars">
-			<div class="container-fluid-full">
+			<div id="bmy-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+				<div id="bmy-ps-info" class="float-right">
+					liyuchun [版主] | 站内信(5) | 消息(26) | 工具箱 | 注销
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div id="bmy-body" class="container-fluid-full">
 				<div class="row-fluid">
-					<section id="sidebar-left">
+					<section id="bmy-sidebar-left">
 						<div class="nav-collapse sidebar-nav">
 							<header>
 								<div id="bmy-logo"></div>
@@ -28,17 +35,21 @@
 						</div>
 					</section>
 
-					<section id="content">
-						<header>
-							<div id="ps-info"></div>
-							<div id="ads"></div>
-						</header>
+					<section id="bmy-content">
 						<div id="container">
 							{{outlet}}
 						</div>
 					</section>
 				</div>
 			</div>
+		</script>
+
+		<script type="text/x-handlebars" id="board">
+			{{partial "board/_header"}}
+		</script>
+
+		<script type="text/x-handlebars" id="board/_header">
+			<header id="bmy-board-header"></header>
 		</script>
 
 		<script src="js/libs/jquery-1.10.2.js"></script>
