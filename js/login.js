@@ -2,21 +2,21 @@ $('button#btn-login').click(function() {
 	var userid   = $('input#username').val();
 	var passwd   = $('input#password').val();
 	var is_rmbme = $('input#chk_remember').val();
-	var exp_day  = (is_rmbme) ? 7 : 0;
 
 	var url_login = 'api/user/login?userid='+userid+'&passwd='+passwd+'&appkey=newweb';
 
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: url_login,
 		dataType: 'json',
 		success: function(data) {
 			if(data.errcode != 0) {
 				alert(data.errcode);
 			} else {
-				$.cookie('userid', data.UserID, {expires: exp_day});
-				$.cookie('sessid', data.SessionID, {expires: exp_day});
-				$.cookie('token', data.Token, {expires: exp_day});
+				localStorage.userid = data.userid;
+				localStorage.sessid = data.sessid;
+				localStorage.token  = data.token;
+				localStorage.is_rmbme = is_rmbme;
 			}
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
@@ -27,10 +27,16 @@ $('button#btn-login').click(function() {
 });
 
 $(document).ready(function (){
-	var userid = $.cookie('userid');
-	var sessid = $.cookie('sessid');
+	var userid = localStorage.userid;
+	var sessid = localStorage.sessid;
+	var is_local_rmbme = localStorage.is_rmbme;
 
-	if(userid==null || sessid==null) {
+	if(typeof(is_local_rmbme) == 'undefined' || typeof(userid) == 'undefined' || typeof(sessid) == 'undefined') {
+		$('div#login-form').removeClass('hidden');
+		return;
+	}
+
+	if(is_local_rmbme==null || userid==null || sessid==null) {
 		$('div#login-form').removeClass('hidden');
 		return;
 	}
