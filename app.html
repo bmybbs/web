@@ -51,35 +51,32 @@
 		<script type="text/x-handlebars" id="board/_header">
 			<header id="bmy-board-header">
 				<div id="header-left">
-					<h3>说说咱交大</h3>
-					<div>XJTUnews / <a href="">交通大学</a></div>
-					<img class="header-left" id="header-collection-button" src="" alt="加入收藏夹" />
+					<h3>{{zh_name}}</h3>
+					<div>{{name}} / <a href="">{{secstr}}</a></div>
+					<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
 				</div>
-				<div id="header-right" >
+				<div id="header-right">
 					<div id="header-status">
-						今日新帖 / <span>62</span>&nbsp;&nbsp;
-						在线 / <span>52</span>&nbsp;&nbsp;
-						在线 / <span>17996</span>
+						今日新帖 / <span>{{today_new}}</span>&nbsp;&nbsp;
+						在线 / <span>{{inboard_num}}</span>&nbsp;&nbsp;
+						人气值 / <span>{{score}}</span>
 					</div>
-					<div>版主 / <a href="">WeaponLee</a> <a href="">deepurple</a></div>
-					<div>小版主 / <a href="">nikon</a></div>
+					<div>版主 /{{bmyBBM bm}}</div>
+					<div>小版主 /{{bmySBM bm}}</div>
 				</div>
 			</header>
 			<section id="bmy-board-content">
-				<div id="bmy-board-hot">
-					<div class="hot-item">
-						<div>HOT</div>
-						<a class="hot-tittle" href="">为什么图书馆上自习成了交大学生的特权</a>
-						<a class="hot-user" href="">guohao</a>
-						<span class="hot-date">Nov 27 23:44:57</span>
+				{{#if hot_topic.length>0}}
+					<div id="bmy-board-hot">
+						{{#each hot_topic}}
+							<div class="hot-item">
+								<div>HOT</div>
+								<a class="hot-tittle" href="">{{title}}</a>
+								<span class="hot-date">{{bmyDate tid}}</span>
+							</div>
+						{{#/each}}
 					</div>
-					<div class="hot-item">
-						<div>HOT</div>
-						<a class="hot-tittle" href="">为什么图书馆上自习成了交大学生的特权</a>
-						<a class="hot-user" href="">guohao</a>
-						<span class="hot-date">Nov 27 23:44:57</span>
-					</div>
-				</div>
+				{{/if}}
 				<div id="bmy-board-postlist">
 					<div id="postlist-operation">
 						<div id="postlist-publish">发表文章</div>
