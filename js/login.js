@@ -6,7 +6,7 @@ $('button#btn-login').click(function() {
 	var url_login = 'api/user/login?userid='+userid+'&passwd='+passwd+'&appkey=newweb';
 
 	$.ajax({
-		type: "POST",
+		type: "GET",
 		url: url_login,
 		dataType: 'json',
 		success: function(data) {

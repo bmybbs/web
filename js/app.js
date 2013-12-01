@@ -4,7 +4,7 @@ var appkey = 'newweb';
 
 App.Router.map(function() {
 	// put your routes here
-	this.resource('board', { path: ':board_name' });
+	this.resource('board', { path: '/board/:board_name' });
 });
 
 App.IndexRoute = Ember.Route.extend({
@@ -13,13 +13,15 @@ App.IndexRoute = Ember.Route.extend({
 
 App.BoardRoute = Ember.Route.extend({
 	model: function(params) {
-		$.ajax({
+		return Ember.$.ajax({
 			type: "GET",
 			url: 'api/board/info?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&bname=' + params.board_name + '&appkey=' + appkey,
 			dataType: 'json',
 			success: function(data) {
 				return data;
 			}
+		}).then(function(data) {
+			return data;
 		});
 	}
 });
@@ -32,7 +34,7 @@ Ember.Handlebars.helper('bmyBBM', function(items) {
 			break;
 		out = out + " <a href='#'>" + items[i] + "</a>";
 	}
-	return out;
+	return new Handlebars.SafeString(out);
 });
 
 Ember.Handlebars.helper('bmySBM', function(items) {
@@ -43,11 +45,11 @@ Ember.Handlebars.helper('bmySBM', function(items) {
 			break;
 		out = out + " <a href='#'>" + items[i] + "</a>";
 	}
-	return out;
+	return new Handlebars.SafeString(out);
 });
 
 Ember.Handlebars.helper('bmyDate', function(tid) {
 	var date = new Date(tid*1000);
 
 	return date.toLocaleString();
-})
+});

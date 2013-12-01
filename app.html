@@ -61,12 +61,12 @@
 						在线 / <span>{{inboard_num}}</span>&nbsp;&nbsp;
 						人气值 / <span>{{score}}</span>
 					</div>
-					<div>版主 /{{bmyBBM bm}}</div>
-					<div>小版主 /{{bmySBM bm}}</div>
+					<div>版主 /{{{bmyBBM bm}}}</div>
+					<div>小版主 /{{{bmySBM bm}}}</div>
 				</div>
 			</header>
 			<section id="bmy-board-content">
-				{{#if hot_topic.length>0}}
+				{{#if hot_topic.length}}
 					<div id="bmy-board-hot">
 						{{#each hot_topic}}
 							<div class="hot-item">
@@ -74,7 +74,7 @@
 								<a class="hot-tittle" href="">{{title}}</a>
 								<span class="hot-date">{{bmyDate tid}}</span>
 							</div>
-						{{#/each}}
+						{{/each}}
 					</div>
 				{{/if}}
 				<div id="bmy-board-postlist">
