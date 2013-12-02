@@ -33,17 +33,16 @@ $(document).ready(function (){
 		$('#bmy-ps-info').html("<a href='#'>登录</a>");
 	else {
 		$('#bmy-ps-info').html("<a href='#");
-		var url_checksession = 'api/user/checksession?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
-		$.getJSON(url_checksession, function(data) {
+		var url_query_user = 'api/user/query?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
+		$.getJSON(url_query_user, function(data) {
 			if(data.errcode == 0) {
-				$('#bmy-ps-info').html(localStorage.userid + " | 站内信 | 消息 | 工具箱 | 注销");
+				$('#bmy-ps-info').html(localStorage.userid + " | 站内信(" + data.unread_mail + ") | 提醒(" + data.unread_notify + ") | 工具箱 | 注销");
 			} else {
 				$('#bmy-ps-info').html("<a href='#'>登录</a>");
 			}
-		})
+		});
 	}
-	var ps_out = "liyuchun [版主] | 站内信(5) | 消息(26) | 工具箱 | 注销";
-})
+});
 
 App.Router.map(function() {
 	// put your routes here
@@ -97,3 +96,6 @@ Ember.Handlebars.helper('bmyDate', function(tid) {
 	return date.toLocaleString();
 });
 
+Ember.Handlebars.helper('bmySecstr', function(secstr) {
+	return bmysecstrs.findBy('id', secstr);
+})

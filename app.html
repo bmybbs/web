@@ -18,7 +18,7 @@
 
 			<div id="bmy-body">
 				<div class="bmy-container">
-					<section id="bmy-sidebar-left">
+					<section id="bmy-sidebar-left" class="float-left">
 						<div class="nav-collapse sidebar-nav">
 							<header>
 								<div id="bmy-logo"></div>
@@ -45,7 +45,7 @@
 						</div>
 					</section>
 
-					<section id="bmy-content">
+					<section id="bmy-content" class="float-right">
 						<div id="container">
 							{{outlet}}
 						</div>
@@ -60,12 +60,12 @@
 
 		<script type="text/x-handlebars" id="board/_header">
 			<header id="bmy-board-header">
-				<div id="header-left">
+				<div id="board-header-left">
 					<h3>{{zh_name}}</h3>
-					<div>{{name}} / <a href="">{{secstr}}</a></div>
+					<div>{{name}} / <a href="">{{bmySecstr secstr}}</a></div>
 					<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
 				</div>
-				<div id="header-right">
+				<div id="board-header-right">
 					<div id="header-status">
 						今日新帖 / <span>{{today_new}}</span>&nbsp;&nbsp;
 						在线 / <span>{{inboard_num}}</span>&nbsp;&nbsp;
@@ -89,14 +89,22 @@
 				{{/if}}
 				<div id="bmy-board-postlist">
 					<div id="postlist-operation">
-						<div id="postlist-publish">发表文章</div>
-						<div id="postlist-mode">
-							<div>一般模式</div>
-							<div>主题模式</div>
+						<div id="postlist-publish" class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">发表文章</a></li>
+								<li><a href="#">模板发文</a></li>
+							</ul>
 						</div>
-						<div id="postlist-topbottom">
-							<div>置顶</div>
-							<div>置底</div>
+						<div class="btn-toolbar">
+							<div id="postlist-mode" class="btn-group">
+								<button type="button" class="btn btn-default">一般模式</button>
+								<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
+							</div>
+							<div id="postlist-topbottom" class="btn-group">
+								<button type="button" class="btn btn-default">置顶</button>
+								<button type="button" class="btn btn-default" disabled="disabled">置底</button>
+							</div>
 						</div>
 						<div id="postlist-paging">
 							<span><a>首页</a> / <a>上一页</a> / <a>下一页</a> / <a>末页</a></span>

@@ -54,8 +54,6 @@ div.bmy-container {
 	background: #F5F5F5;
 	width: 197px;
 	border-right: #D9D9D9 3px solid;
-	min-height: 100%;
-	display: inline-block;
 }
 
 #bmy-sidebar-left header {
@@ -135,7 +133,6 @@ div.bmy-sectitle {
 	min-height: 500px;
 	width: 1000px;
 	position: relative;
-	float: right;
 }
 
 #bmy-content header #ads {
@@ -154,37 +151,39 @@ div.bmy-sectitle {
 	padding: 20px 22px;
 }
 
-#header-left {
+#board-header-left {
 	float: left;
 }
 
-#header-left h3 {
+#board-header-left h3 {
 	margin: 0;
 	float: left;
 }
 
-#header-left div {
+#board-header-left div {
 	float: left;
 	margin-top: 8px;
 	padding-left: 20px;
 }
 
-#header-left img {
+/*#board-header-left img {
 	float: left;
 	width: 120px;
 	height: 26px;
 	margin-top: 12px;
-}
+}*/
 
-#header-collection-button {
+#btn-add-to-collection {
 	clear: both;
+	display: block;
+	margin: 14px 0;
 }
 
-#header-right {
+#board-header-right {
 	float: right;
 }
 
-#header-right div{
+#board-header-right div{
 	float: right;
 	clear: both;
 	margin-bottom: 4px;
