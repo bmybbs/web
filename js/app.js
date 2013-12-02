@@ -33,10 +33,10 @@ $(document).ready(function (){
 		$('#bmy-ps-info').html("<a href='#'>登录</a>");
 	else {
 		$('#bmy-ps-info').html("<a href='#");
-		var url_checksession = 'api/user/checksession?userid=' + localStorage.userid + '&sessid' + localStorage.sessid + '&appkey=' + appkey;
+		var url_checksession = 'api/user/checksession?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
 		$.getJSON(url_checksession, function(data) {
 			if(data.errcode == 0) {
-				$('#bmy-ps-info').html(data.userid + " | 站内信 | 消息 | 工具箱 | 注销");
+				$('#bmy-ps-info').html(localStorage.userid + " | 站内信 | 消息 | 工具箱 | 注销");
 			} else {
 				$('#bmy-ps-info').html("<a href='#'>登录</a>");
 			}
