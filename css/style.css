@@ -37,14 +37,25 @@ body {
 	margin-right: 10px;
 }
 
+div#bmy-body {
+	min-width: 100%;
+}
+
+div.bmy-container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+	min-height: 100%;
+	position: relative;
+}
+
 #bmy-sidebar-left {
-	padding: 0px !important;
-	height: 100%;
-	position: fixed;
+	padding: 0px 25px !important;
 	background: #F5F5F5;
 	width: 197px;
 	border-right: #D9D9D9 3px solid;
-	float: left;
+	min-height: 100%;
+	display: inline-block;
 }
 
 #bmy-sidebar-left header {
@@ -59,7 +70,7 @@ body {
 
 #bmy-sidebar-left a {
 	color: #717171;
-	padding-left: 30px;
+/*	padding-left: 30px;*/
 }
 
 #bmy-sidebar-left ul.nav li > a:hover {
@@ -75,12 +86,56 @@ body {
 	font-weight: lighter;
 }
 
+#bmy-sns {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-top: #D5D5D5 1px solid;
+	border-bottom: #D5D5D5 1px solid;
+}
+
+#bmy-sns div {
+	text-align: center;
+	color: white;
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 20px;
+	padding-top: 17px;
+	padding-bottom: 17px;
+	margin-bottom: 10px;
+}
+
+#bmy-sns div:hover {
+	cursor: pointer;
+}
+
+div#bmy-rr {
+	background: #0077C3;
+}
+
+div#bmy-wb {
+	background: #C30040;
+}
+
+div#bmy-brd-index {
+	font-size: 14px;
+}
+
+div.bmy-sec {
+	margin-top: 20px;
+}
+
+div.bmy-sectitle {
+	font-weight: bolder;
+}
+
 #bmy-content {
-	margin-left: 200px;
 	padding: 15px;
-	height: 100%;
-	float: left;
+	min-height: 500px;
 	width: 1000px;
+	position: relative;
+	float: right;
 }
 
 #bmy-content header #ads {
@@ -241,10 +296,4 @@ body {
 
 #postlist-paging form button {
 	height: 23px;
-}
-
-.row-fluid {
-	margin-left: auto;
-	margin-right: auto;
-	width: 1200px;
 }
