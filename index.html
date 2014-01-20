@@ -1,36 +1,93 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>new bmy</title>
+		<title>bmy</title>
 		<meta charset="utf-8">
-		<link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link id="bootstrap-style" href="static/css/bootstrap.min.css" rel="stylesheet">
+		<link href="static/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/showloginpics.css" rel="stylesheet">
+		<style type="text/css">
+			body { background: #eee;}
+			.container { min-width: 1200px !important;}
+		</style>
 	</head>
 
 	<body>
 		<div class="container">
-			<div class="content">
-				<div class="row">
-					<div id="login-form" class="hidden">
-						<h2>Login</h2>
-						<div class="clearfix">
-							<input id="username" type="text" placeholder="用户名">
-						</div>
-						<div class="clearfix">
-							<input id="password" type="password" placeholder="密码">
-						</div>
-						<div class="checkbox">
-							<label><input id="chk_remember" type="checkbox">记住我</label>
-						</div>
-						<button id="btn-login" class="btn btn-primary" type="submit">登录</button>
+			<div id="img-wrapper" class="float-right">
+				<div id="img-container"></div>
+				<div id="img-nav"></div>
+			</div>
+
+			<div class="form-signin float-left">
+				<h2>欢迎访问兵马俑 BBS</h2>
+				<div id="login-form" class="hidden">
+					<input class="form-control input-lg" autofocus="" id="username" type="text" placeholder="用户名">
+
+					<input class="form-control input-lg" id="password" type="password" placeholder="密码">
+					<label><input id="chk_remember" type="checkbox">记住我</label>
+					<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+				</div>
+				<div id="direct-login" class="hidden">
+					<h3>您已登录系统，请直接进入</h3>
+					<button id="btn-direct-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+				</div>
+				<div id="bmy-links">
+					<div class="bmy-link-line">
+						<a href="#">匿名登录</a>
+						<a href="#">telnet登录</a>
 					</div>
-					<div id="direct-login" class="hidden">
-						<button id="btn-direct-login" class="btn btn-primary" type="submit">登录</button>
+					<div class="bmy-link-line">
+						<a href="#">CTerm工具下载</a>
+						<a href="#">新用户注册</a>
+					</div>
+					<div class="bmy-link-line">
+						<a href="#">老 Web</a>
+						<a href="#">找回密码</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="js/libs/jquery-1.10.2.js"></script>
-		<script src="js/login.js"></script>
+		<footer><div class="container">陕ICP备 05001571号</div></footer>
+		<script src="static/js/jquery-1.10.2.min.js"></script>
+		<script src="js/bmy.js"></script>
+		<script src="js/showloginpics.js"></script>
+		<script>
+			showloginpics("http://bbs.xjtu.edu.cn/bmyMainPic/using/semi-20131201-20131208.jpg;BMY/con?B=AcdemicClub&F=M.1385889349.A;;http://bbs.xjtu.edu.cn/bmyMainPic/using/software-20131201-20131208.jpg;BMY/con?B=Activity&F=M.1385814021.A");
+
+			$(document).ready(function (){
+				var userid = localStorage.userid;
+				var sessid = localStorage.sessid;
+				var is_local_rmbme = localStorage.is_rmbme;
+
+				if(typeof(is_local_rmbme) == 'undefined' || typeof(userid) == 'undefined' || typeof(sessid) == 'undefined') {
+					$('div#login-form').removeClass('hidden');
+				} else if(is_local_rmbme==null || userid==null || sessid==null) {
+					$('div#login-form').removeClass('hidden');
+				} else {
+					var url_checksession = 'api/user/checksession?userid='+userid+'&sessid='+sessid+'&appkey=newweb';
+
+					$.getJSON(url_checksession, function(data) {
+						if(data.errcode == 0) {
+							$('div#direct-login').removeClass('hidden');
+						} else {
+							$('div#login-form').removeClass('hidden');
+						}
+					})
+					.fail(function() {
+						$('div#login-form').removeClass('hidden');
+					});
+				}
+
+				bind_login_button(function() {
+					document.location.href = 'dashboard.html';
+				});
+
+				$('#btn-direct-login').click(function() {
+					document.location.href = 'dashboard.html';
+				});
+			});
+		</script>
 	</body>
 </html>
