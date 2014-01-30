@@ -97,3 +97,9 @@ function bind_logout_button(callback) {
 		});
 	});
 }
+
+function load_section_dropdown() {
+	for(var i=0; i<bmysecstrs.length; i++) {
+		$('<li><a href="#">' + bmysecstrs[i].id + '区&nbsp;' + bmysecstrs[i].name + '</a></li>').appendTo('ul#nav-section-dropdown');
+	}
+}

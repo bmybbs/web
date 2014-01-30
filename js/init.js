@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	// load menu/sections
+	load_section_dropdown();
 
 	// setup commandbar
 	$('#commandbar').on('show.bs.dropdown', function() {
