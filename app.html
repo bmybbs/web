@@ -1,129 +1,76 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>bmy</title>
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	</head>
-	<body>
+<head>
+	<meta charset="utf-8">
+	<title>bmy</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+	<div id="login-box" class="popup form-signin">
+		<span class="bpopup-button b-close"><span>X</span></span>
+		<div id="login-form">
+			<input class="form-control input-lg" autofocus="" id="username" type="text" placeholder="用户名">
+			<input class="form-control input-lg" id="password" type="password" placeholder="密码">
+			<label><input id="chk_remember" type="checkbox">记住我</label>
+			<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+		</div>
+	</div>
 
-		<script type="text/x-handlebars">
-			<div id="bmy-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
-				<div id="bmy-ps-info" class="float-right">
+	<script type="text/x-handlebars">
+		<div id="bmy-navbar" class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">
+						<img src="static/images/logo-small-white.png" alt="兵马俑 BBS" />
+					</a>
 				</div>
-				<div class="clear"></div>
-			</div>
-
-			<div id="bmy-body">
-				<div class="bmy-container">
-					<section id="bmy-sidebar-left" class="float-left">
-						<div class="nav-collapse sidebar-nav">
-							<header>
-								<div id="bmy-logo"></div>
-							</header>
-							<ul class="nav nav-tabs nav-stacked main-menu">
-								<li><a href="#">兵马俑导读</a></li>
-								<li><a href="#">热门话题页</a></li>
-								<li><a href="#">收藏夹</a></li>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">导读</a></li>
+						<li><a href="#">热门</a></li>
+						<li><a href="#">收藏</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">分区 <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">1</a></li>
 							</ul>
-							<div id="brd-jmp-box">
-								<input type="text" placeholder="版面英文名称">
+						</li>
+						<li><a href="#">帮助</a></li>
+					</ul>
+					<form class="navbar-form navbar-left" role="form">
+						<div class="form-group dropdown" id="commandbar">
+							{{input type="text" placeholder="搜索版面、用户、或者文章" class="form-control dropdown-toggle" data-toggle="dropdown" value=searchcommand}}
+							<div class="input-group-btn">
+				                <span class="btn btn-default" disabled="disabled"><i class="glyphicon glyphicon-search"></i></span>
 							</div>
-							<div id="bmy-sns">
-								<div id="bmy-rr">兵马俑BBS<br>官方人人公共主页</div>
-								<div id="bmy-wb">兵马俑BBS<br>官方微博</div>
-							</div>
-							<div id="bmy-brd-index">
-							</div>
-							<div id="bmy-helpers">
-								<a href="#">全站文章搜索</a><br>
-								<a href="#">BBS使用帮助</a><br>
-								<a href="#">发信给站长</a><br>
-							</div>
-						</div>
-					</section>
-
-					<section id="bmy-content" class="float-right">
-						<div id="container">
-							{{outlet}}
-						</div>
-					</section>
-				</div>
-			</div>
-		</script>
-
-		<script type="text/x-handlebars" id="board">
-			{{partial "board/_header"}}
-		</script>
-
-		<script type="text/x-handlebars" id="board/_header">
-			<header id="bmy-board-header">
-				<div id="board-header-left">
-					<h3>{{zh_name}}</h3>
-					<div>{{name}} / <a href="">{{bmySecstr secstr}}</a></div>
-					<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
-				</div>
-				<div id="board-header-right">
-					<div id="header-status">
-						今日新帖 / <span>{{today_new}}</span>&nbsp;&nbsp;
-						在线 / <span>{{inboard_num}}</span>&nbsp;&nbsp;
-						人气值 / <span>{{score}}</span>
-					</div>
-					<div>版主 /{{{bmyBBM bm}}}</div>
-					<div>小版主 /{{{bmySBM bm}}}</div>
-				</div>
-			</header>
-			<section id="bmy-board-content">
-				{{#if hot_topic.length}}
-					<div id="bmy-board-hot">
-						{{#each hot_topic}}
-							<div class="hot-item">
-								<div>HOT</div>
-								<a class="hot-tittle" href="">{{title}}</a>
-								<span class="hot-date">{{bmyDate tid}}</span>
-							</div>
-						{{/each}}
-					</div>
-				{{/if}}
-				<div id="bmy-board-postlist">
-					<div id="postlist-operation">
-						<div id="postlist-publish" class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">发表文章</a></li>
-								<li><a href="#">模板发文</a></li>
+							<ul class="dropdown-menu">
+								<li><a href="#"><span class="label label-primary">搜索版面</span> {{searchcommand}}</a></li>
+								<li><a href="#"><span class="label label-success">搜索用户</span> {{searchcommand}}</a></li>
+								<li><a href="#"><span class="label label-danger">搜索文章</span> {{searchcommand}}</a></li>
 							</ul>
 						</div>
-						<div class="btn-toolbar">
-							<div id="postlist-mode" class="btn-group">
-								<button type="button" class="btn btn-default">一般模式</button>
-								<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
-							</div>
-							<div id="postlist-topbottom" class="btn-group">
-								<button type="button" class="btn btn-default">置顶</button>
-								<button type="button" class="btn btn-default" disabled="disabled">置底</button>
-							</div>
-						</div>
-						<div id="postlist-paging">
-							<span><a>首页</a> / <a>上一页</a> / <a>下一页</a> / <a>末页</a></span>
-							<form>
-								<input type="text">
-								<button type="submit">></button>
-							</form>
-							<span>2122 / 2122</span>
-						</div>
-					</div>
+					</form>
+					<div id="bmy-ps-info" class="nav navbar-nav navbar-right"></div>
 				</div>
-			</section>
-		</script>
+			</div>
+		</div>
+	</script>
 
-		<script src="static/js/jquery-1.10.2.min.js"></script>
-		<script src="static/js/handlebars-1.3.0.js"></script>
-		<script src="static/js/ember-1.3.1.min.js"></script>
-		<script src="static/js/bootstrap.min.js"></script>
-		<script src="js/app.js"></script>
-
-	</body>
+	<script src="static/js/jquery-1.10.2.min.js"></script>
+	<script src="static/js/jquery.bpopup.min.js"></script>
+	<script src="static/js/handlebars-1.3.0.js"></script>
+	<script src="static/js/ember-1.3.1.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/moment-with-langs.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/init.js"></script>
+</body>
 </html>
