@@ -4,6 +4,10 @@ App.Router.map(function() {
     this.route('index', { path: '/' })
 });
 
+App.ApplicationController = Ember.Controller.extend({
+	searchcommand: ''
+});
+
 App.IndexRoute = Ember.Route.extend({
 	model : function() {
 		return {};
