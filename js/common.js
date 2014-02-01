@@ -103,3 +103,85 @@ function load_section_dropdown() {
 		$('<li><a href="#">' + bmysecstrs[i].id + '区&nbsp;' + bmysecstrs[i].name + '</a></li>').appendTo('ul#nav-section-dropdown');
 	}
 }
+
+// BMYBBS Classes
+var BMYAPIRequest = Class.extend({
+	init: function(url) {
+		this.url = url;
+		this.method = "GET";
+	},
+	varify: function() {
+		this.url = this.url + "&appkey=" + appkey;
+		if(typeof(localStorage.userid) != "undefined")
+			this.url = this.url + "&userid=" + localStorage.userid;
+		if(typeof(localStorage.sessid) != "undefined")
+			this.url = this.url + "&sessid=" + localStorage.sessid;
+	},
+	pull: function() {
+		this.varify();
+		return $.ajax(this.url, {
+			type: this.method,
+			dataType: 'json',
+			success: function(data) {
+				return data;
+			}
+		}).then(function(data) {
+				return data;
+		});
+	}
+});
+
+var BMYAPIArticleListRequest = BMYAPIRequest.extend({
+	init: function(obj) {
+		var baseURL = 'api/article/list?type=';
+
+		if(typeof(obj.type) != "undefined") {
+			this.url = baseURL + obj.type;
+			switch (obj.type) {
+				case "top10":
+					break;
+
+				case "sectop":
+					if(typeof(obj.secstr) != "undefined")               // warning
+						this.url = this.url + "&secstr=" + obj.secstr;
+					break;
+
+				case "commend":
+					if(typeof(obj.count) != "undefined")
+						this.url = this.url + "&count=" + obj.count;
+					if(typeof(obj.startnum) != "undefined")
+						this.url = this.url + "&startnum=" + obj.startnum;
+					break;
+
+				case "announce":
+					if(typeof(obj.count) != "undefined")
+						this.url = this.url + "&count=" + obj.count;
+					if(typeof(obj.startnum) != "undefined")
+						this.url = this.url + "&startnum=" + obj.startnum;
+					break;
+
+				case "board":
+					this.url = this.url + "&board=" + obj.board + "&btype=" + obj.btype;
+					if(typeof(obj.count) != "undefined")
+						this.url = this.url + "&count=" + obj.count;
+					if(typeof(obj.startnum) != "undefined")
+						this.url = this.url + "&startnum=" + obj.startnum;
+					break;
+
+				case "thread":
+					this.url = this.url + "&board=" + obj.board + "&thread=" + obj.thread;
+					if(typeof(obj.count) != "undefined")
+						this.url = this.url + "&count=" + obj.count;
+					if(typeof(obj.startnum) != "undefined")
+						this.url = this.url + "&startnum=" + obj.startnum;
+					break;
+			}
+		}
+
+		if(typeof(obj.httpMethod) != "undefined") {
+			this.method = obj.httpMethod;
+		} else {
+			this.method = "GET";
+		}
+	}
+});
