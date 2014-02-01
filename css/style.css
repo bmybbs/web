@@ -17,10 +17,6 @@ a.navbar-brand {
 	filter:alpha(opacity=100);
 }
 
-.navbar .navbar-form div.form-group {
-	margin-left: 50px;
-}
-
 .navbar input.form-control {
 	width: 300px;
 	border-right: none;
@@ -40,6 +36,10 @@ a.navbar-brand {
 .navbar .form-group .dropdown-menu {
 	width: 300px;
 	margin-top: -1px;
+}
+
+button#nav-user-btn {
+	width: 160px;
 }
 
 
