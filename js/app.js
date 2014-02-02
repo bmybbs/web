@@ -10,7 +10,7 @@ App.ApplicationController = Ember.Controller.extend({
 
 App.IndexRoute = Ember.Route.extend({
 	model : function() {
-		return {};
+		return [];
 	},
 	setupController: function(controller, model) {
 		//var get_user = function() {
