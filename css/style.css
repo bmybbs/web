@@ -20,6 +20,8 @@ div.container { width: 1000px; padding: 0px; }
 .bmy-font-sz-20		{ font-size: 20px; }
 .bmy-font-sz-12		{ font-size: 12px; }
 
+.bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
+
 /* navbar style */
 a.navbar-brand { padding: 10px;}
 .navbar-brand img { opacity: 0.9; filter:alpha(opacity=90); }
