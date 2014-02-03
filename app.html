@@ -202,11 +202,31 @@
 	</script>
 
     <script type="text/x-handlebars" id="components/sectop_list">
-
+        {{#each}}
+            <div class="dashboard-item">
+                <div class="dashboard-item-title float-left">
+                    <span class="bmy-span-icon bmy-bg-color-gray1"></span>
+                    <span><a href="#">{{title}}</a></span>
+                    <span class="dashboard-item-author">{{author}}@{{board}}</span>
+                </div>
+                <div class="float-right">
+                    {{#if type}}
+                        {{tid}}
+                    {{else}}
+                        {{aid}}
+                    {{/if}}
+                </div>
+                <div class="clear"></div>
+            </div>
+        {{/each}}
     </script>
 
     <script type="text/x-handlebars" id="components/annouce_list">
-
+        {{#each}}
+            <div class="dashboard-item">
+                <span><a href="#">{{title}}</a></span>
+            </div>
+        {{/each}}
     </script>
 
 	<script src="static/js/jquery-1.10.2.min.js"></script>
