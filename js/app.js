@@ -54,3 +54,17 @@ App.IndexRoute = Ember.Route.extend({
 		controller.set('is_loaded_articlelist_top10', true);
 	}
 });
+
+// helpers
+Ember.Handlebars.helper('BMYTime', function(value, option) {
+	var t = new moment.unix(value);
+	return t.format('YYYY.MM.DD HH:mm:ss');
+});
+
+Ember.Handlebars.helper('BMYArticleLink', function(value, option) {
+
+});
+
+Ember.Handlebars.helper('BMYBoardLink', function(value, option) {
+
+});
