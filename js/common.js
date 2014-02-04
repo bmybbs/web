@@ -32,7 +32,7 @@ function load_personal_status(callback) {
 				var total_notify = data.unread_mail + data.unread_notify;
 				$('#bmy-ps-info').html("<div class='btn-group'><button id='nav-user-btn' type='button' class='btn btn-success navbar-btn dropdown-toggle' data-toggle='dropdown'>" + localStorage.userid + "<span class='badge'>" + total_notify + "</span><span class='caret'></span></button><ul class='dropdown-menu' role='menu'><li><a href='#'>站内信<span class='badge pull-right'>" + data.unread_mail + "</span></a></li><li><a href='#'>提醒<span class='badge pull-right'>" + data.unread_notify + "</span></li><li class='divider'></li><li><a href='#'>工具箱</a></li><li class='divider'></li><li><a href='#'>注销</a></li></ul>");
 			} else {
-				$('#bmy-ps-info').html("<span class='btn btn-success' id='login-button'>登录</span>");
+				$('#bmy-ps-info').html("<span class='btn btn-success navbar-btn' id='login-button'>登录</span>");
 			}
 
 			if(callback && typeof(callback)=="function")
