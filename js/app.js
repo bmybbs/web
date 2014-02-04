@@ -135,7 +135,7 @@ App.BoardRoute = Ember.Route.extend({
 // helpers
 Ember.Handlebars.helper('BMYTime', function(value, option) {
 	var t = new moment.unix(value);
-	return t.format('YYYY.MM.DD HH:mm:ss');
+	return t.format('YYYY.MM.DD HH:mm');
 });
 
 Ember.Handlebars.helper('BMYArticleLink', function(value, option) {
