@@ -1,13 +1,15 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-	this.route('index', { path: '/' })
+	this.route('index', { path: '/' });
+	this.route('board', { path: ':board_name' });
 });
 
 App.ApplicationController = Ember.Controller.extend({
 	searchcommand: ''
 });
 
+// routers
 App.IndexRoute = Ember.Route.extend({
 	model : function() {
 		return [];
@@ -32,26 +34,101 @@ App.IndexRoute = Ember.Route.extend({
 		var bmy_api_sectop_A_req = new BMYAPIArticleListRequest({ type: "sectop", secstr: 'A' });
 		var bmy_api_sectop_C_req = new BMYAPIArticleListRequest({ type: "sectop", secstr: 'C' });
 
-		controller.set('articlelist_top10', bmy_api_top10_req.pull().articlelist);
-		controller.set('articlelist_announce', bmy_api_announce_req.pull().articlelist);
-		controller.set('articlelist_commend', bmy_api_commend_req.pull().articlelist);
-		controller.set('articlelist_sectop_0', bmy_api_sectop_0_req.pull().articlelist);
-		controller.set('articlelist_sectop_1', bmy_api_sectop_1_req.pull().articlelist);
-		controller.set('articlelist_sectop_2', bmy_api_sectop_2_req.pull().articlelist);
-		controller.set('articlelist_sectop_3', bmy_api_sectop_3_req.pull().articlelist);
-		controller.set('articlelist_sectop_4', bmy_api_sectop_4_req.pull().articlelist);
-		controller.set('articlelist_sectop_5', bmy_api_sectop_5_req.pull().articlelist);
-		controller.set('articlelist_sectop_6', bmy_api_sectop_6_req.pull().articlelist);
-		controller.set('articlelist_sectop_7', bmy_api_sectop_7_req.pull().articlelist);
-		controller.set('articlelist_sectop_8', bmy_api_sectop_8_req.pull().articlelist);
-		controller.set('articlelist_sectop_9', bmy_api_sectop_9_req.pull().articlelist);
-		controller.set('articlelist_sectop_G', bmy_api_sectop_G_req.pull().articlelist);
-		controller.set('articlelist_sectop_N', bmy_api_sectop_N_req.pull().articlelist);
-		controller.set('articlelist_sectop_H', bmy_api_sectop_H_req.pull().articlelist);
-		controller.set('articlelist_sectop_A', bmy_api_sectop_A_req.pull().articlelist);
-		controller.set('articlelist_sectop_C', bmy_api_sectop_C_req.pull().articlelist);
+		bmy_api_top10_req.pull().then(function(data) {
+			controller.set('articlelist_top10', data.articlelist);
+			controller.set('is_loaded_articlelist_top10', true);
+		});
 
-		controller.set('is_loaded_articlelist_top10', true);
+		bmy_api_announce_req.pull().then(function(data) {
+			controller.set('articlelist_announce', data.articlelist);
+			controller.set('is_loaded_articlelist_announce', true);
+		});
+
+		bmy_api_commend_req.pull().then(function(data) {
+			controller.set('articlelist_commend', data.articlelist);
+			controller.set('is_loaded_articlelist_commend', true);
+		});
+
+		bmy_api_sectop_0_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_0', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_0', true);
+		});
+
+		bmy_api_sectop_1_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_1', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_1', true);
+		});
+
+		bmy_api_sectop_2_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_2', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_2', true);
+		});
+
+		bmy_api_sectop_3_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_3', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_3', true);
+		});
+
+		bmy_api_sectop_4_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_4', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_4', true);
+		});
+
+		bmy_api_sectop_5_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_5', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_5', true);
+		});
+
+		bmy_api_sectop_6_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_6', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_6', true);
+		});
+
+		bmy_api_sectop_7_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_7', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_7', true);
+		});
+
+		bmy_api_sectop_8_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_8', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_8', true);
+		});
+
+		bmy_api_sectop_9_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_9', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_9', true);
+		});
+
+		bmy_api_sectop_G_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_G', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_G', true);
+		});
+
+		bmy_api_sectop_N_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_N', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_N', true);
+		});
+
+		bmy_api_sectop_H_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_H', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_H', true);
+		});
+
+		bmy_api_sectop_A_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_A', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_A', true);
+		});
+
+		bmy_api_sectop_C_req.pull().then(function(data) {
+			controller.set('articlelist_sectop_C', data.articlelist);
+			controller.set('is_loaded_articlelist_sectop_C', true);
+		});
+	}
+});
+
+App.BoardRoute = Ember.Route.extend({
+	model: function() {
+
 	}
 });
 
