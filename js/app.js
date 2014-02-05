@@ -145,3 +145,31 @@ Ember.Handlebars.helper('BMYArticleLink', function(value, option) {
 Ember.Handlebars.helper('BMYBoardLink', function(value, option) {
 
 });
+
+Ember.Handlebars.helper('BMYSecName', function(value, option) {
+	return $.grep(bmysecstrs, function(e) {
+		return e.id == value;
+	})[0].name;
+});
+
+Ember.Handlebars.helper('BMYBigBM', function(value, option) {
+	var out = "";
+	for(var i=0; i<4; i++) {
+		if(value[i] == null)
+			break;
+		out += "&nbsp;<a href='#'>" + value[i] + "</a>";
+	}
+
+	return new Handlebars.SafeString(out);
+});
+
+Ember.Handlebars.helper('BMYSmallBM', function(value, option) {
+	var out = "";
+	for(var i=4; i<value.length; i++) {
+		if(value[i] == null)
+			break;
+		out += "&nbsp;<a href='#'>" + value[i] + "</a>";
+	}
+
+	return new Handlebars.SafeString(out);
+});

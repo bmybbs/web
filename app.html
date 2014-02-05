@@ -283,6 +283,63 @@
 		{{/each}}
 	</script>
 
+	<script type="text/x-handlebars" id="components/article-list">
+
+	</script>
+
+	<script type="text/x-handlebars" id="components/thread-list">
+
+	</script>
+
+	<script type="text/x-handlebars" id="components/board-header">
+		{{#with board}}
+		<header>
+			<div class="float-left">
+				<div class="board-header-title">
+					<a id="board-title-zh" href="#">{{zh_name}}</a>
+					<a id="board-title-en" href="#">{{name}}</a>
+					/
+					<a id="board-title-section" href="#">{{BMYSecName secstr}}</a>
+				</div>
+
+				<div>
+					<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
+				</div>
+			</div>
+
+			<div class="float-right">
+				<div>
+					<span class="board-header-status-item">今日新帖<span class="badge">{{today_new}}</span></span>
+					<span class="board-header-status-item">在线<span class="badge">{{inboard_num}}</span></span>
+					<span class="board-header-status-item">人气值<span class="badge">{{score}}</span></span>
+				</div>
+				<div>版主&nbsp;/{{BMYBigBM bm}}</div>
+				{{#if hasSmallBM}}
+				<div>小版主&nbsp;/{{BMYSmallBM bm}}</div>
+				{{/if}}
+			</div>
+
+			<div class="clear"></div>
+		</header>
+		{{/with}}
+	</script>
+
+	<script type="text/x-handlebars" id="components/board-hotitems">
+		<section id="board-hot">
+		{{#each hot_topics}}
+			<div class="hot-item">
+				<div>HOT</div>
+				<a href="#">{{title}}</a>
+				<span class="hot-data">{{BMYTime tid}}</span>
+			</div>
+		{{/each}}
+		</section>
+	</script>
+
+	<script type="text/x-handlebars" id="components/board-nav">
+
+	</script>
+
 	<script src="static/js/jquery-1.10.2.min.js"></script>
 	<script src="static/js/jquery.simple.inheritance.js"></script>
 	<script src="static/js/jquery.bpopup.min.js"></script>
