@@ -109,7 +109,6 @@ function load_section_dropdown() {
 var BMYAPIRequest = Class.extend({
 	init: function(url) {
 		this.url = url;
-		this.method = "GET";
 	},
 	varify: function() {
 		this.url = this.url + "&appkey=" + appkey;
@@ -121,7 +120,7 @@ var BMYAPIRequest = Class.extend({
 	pull: function() {
 		this.varify();
 		return $.ajax(this.url, {
-			type: this.method,
+			type: "GET",
 			dataType: 'json',
 			success: function(data) {
 				return data;
@@ -129,6 +128,9 @@ var BMYAPIRequest = Class.extend({
 		}).then(function(data) {
 				return data;
 		});
+	},
+	post: function() {
+
 	}
 });
 
@@ -178,11 +180,11 @@ var BMYAPIArticleListRequest = BMYAPIRequest.extend({
 					break;
 			}
 		}
+	}
+});
 
-		if(typeof(obj.httpMethod) != "undefined") {
-			this.method = obj.httpMethod;
-		} else {
-			this.method = "GET";
-		}
+var BMYAPIBoardRequest = BMYAPIRequest.extend({
+	init: function(obj) {
+		this.url = 'api/board/info?bname='+obj.name;
 	}
 });
