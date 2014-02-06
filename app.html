@@ -284,11 +284,30 @@
 	</script>
 
 	<script type="text/x-handlebars" id="components/article-list">
-
+		<table class='table table-striped table-condensed'>
+			{{#each articles}}
+			<tr>
+				<td>num</td>
+				<td>{{title}}</td>
+				<td>{{author}}</td>
+				<td>{{BMYTime aid}}</td>
+			</tr>
+			{{/each}}
+		</table>
 	</script>
 
 	<script type="text/x-handlebars" id="components/thread-list">
-
+		<table class="table table-striped table-condensed">
+			{{#each articles}}
+			<tr>
+				<td>num</td>
+				<td>{{title}}</td>
+				<td>{{author}}</td>
+				<td>{{BMYTime tid}}</td>
+				<td>{{th_num}}</td>
+			</tr>
+			{{/each}}
+		</table>
 	</script>
 
 	<script type="text/x-handlebars" id="components/board-header">
@@ -336,8 +355,35 @@
 		</section>
 	</script>
 
-	<script type="text/x-handlebars" id="components/board-nav">
+	<script type="text/x-handlebars" id="components/board-toolbar">
+		<div id="board-operation">
+			<div id="board-publish">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a id="post-button" href="#">发表文章</a></li>
+					<li><a href="#">模板发文</a></li>
+				</ul>
+			</div>
 
+			<div id="board-list-mode" class="btn-group">
+				<button type="button" class="btn btn-default">一般模式</button>
+				<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
+			</div>
+
+			<div id="top-list-mode" class="btn-group">
+				<button type="button" class="btn btn-default">置顶</button>
+				<button type="button" class="btn btn-default" disabled="disabled">置底</button>
+			</div>
+
+			<div id="board-paging" class="float-right">
+				<span><a>首页</a> / <a>上一页</a> / <a>下一页</a> / <a>末页</a></span>
+				<form>
+					<input type="text">
+					<button type="submit">&gt;</button>
+				</form>
+				<span>2122 / 2122</span>
+			</div>
+		</div>
 	</script>
 
 	<script src="static/js/jquery-1.10.2.min.js"></script>
