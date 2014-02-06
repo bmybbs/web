@@ -225,7 +225,9 @@
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="board">
+		{{#if is_loaded_board}}
 		{{board-header board=board}}
+		{{/if}}
 		{{#if hasHotItems}}
 			{{board-hotitems hot_topics=board.hot_topic}}
 		{{/if}}
@@ -295,7 +297,7 @@
 		<table class='table table-striped table-condensed'>
 			{{#each articles}}
 			<tr>
-				<td>num</td>
+				<td>{{num}}</td>
 				<td>{{title}}</td>
 				<td>{{author}}</td>
 				<td>{{BMYTime aid}}</td>

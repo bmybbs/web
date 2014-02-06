@@ -132,14 +132,17 @@ App.IndexRoute = Ember.Route.extend({
 
 App.BoardRoute = Ember.Route.extend({
 	model: function(params) {
-		var b = new BMYAPIBoardRequest({ "name": params.board_name });
-		return b.pull().then(function(data) {
-			data.hasHotItems = (data.hot_topic.length>0);
-			return data;
-		});
+		return [params];
 	},
 	setupController: function(controller, model) {
-		var a = new BMYAPIArticleListRequest({ "type": "board", "board":model.name, "btype":"0"});
+		var b = new BMYAPIBoardRequest({ "name": model[0].board_name });
+		b.pull().then(function(data) {
+			controller.set('board', data);
+			controller.set('is_loaded_board', true);
+			controller.set('hasHotItems', (data.hot_topic.length>0));
+		});
+
+		var a = new BMYAPIArticleListRequest({ "type": "board", "board":model[0].board_name, "btype":"0"});
 		a.pull().then(function(data) {
 			controller.set('articles', data.articlelist);
 			controller.set('is_loaded_articlelist', true);
