@@ -225,6 +225,14 @@
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="board">
+		{{board-header board=board}}
+		{{#if hasHotItems}}
+			{{board-hotitems hot_topics=board.hot_topic}}
+		{{/if}}
+		{{board-toolbar}}
+		{{#if is_loaded_articlelist}}
+		{{article-list articles=articles}}
+		{{/if}}
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="boardlist">

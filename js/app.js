@@ -2,7 +2,7 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
 	this.route('index', { path: '/' });
-	this.route('board', { path: ':board_name' });
+	this.route('board', { path: '/section/:sec_id/:board_name' });
 });
 
 App.ApplicationController = Ember.Controller.extend({
@@ -131,8 +131,19 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.BoardRoute = Ember.Route.extend({
-	model: function() {
-
+	model: function(params) {
+		var b = new BMYAPIBoardRequest({ "name": params.board_name });
+		return b.pull().then(function(data) {
+			data.hasHotItems = (data.hot_topic.length>0);
+			return data;
+		});
+	},
+	setupController: function(controller, model) {
+		var a = new BMYAPIArticleListRequest({ "type": "board", "board":model.name, "btype":"0"});
+		a.pull().then(function(data) {
+			controller.set('articles', data.articlelist);
+			controller.set('is_loaded_articlelist', true);
+		});
 	}
 });
 
