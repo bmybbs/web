@@ -35,7 +35,11 @@ App.IndexRoute = Ember.Route.extend({
 		var bmy_api_sectop_C_req = new BMYAPIArticleListRequest({ type: "sectop", secstr: 'C' });
 
 		bmy_api_top10_req.pull().then(function(data) {
-			controller.set('articlelist_top10', data.articlelist);
+			var d = data.articlelist;
+			for(var i=0; i<3; i++) {
+				d[i].hot = true;
+			}
+			controller.set('articlelist_top10', d);
 			controller.set('is_loaded_articlelist_top10', true);
 		});
 
