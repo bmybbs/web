@@ -1,0 +1,14 @@
+﻿#img-container { position:relative; height:400px; width:770px; }
+
+#img-container a { float:left; position:absolute; }
+
+#img-container a img { border:none; }
+
+#img-container a.show { z-index:500; }
+
+div#img-nav { margin:30px auto 0;}
+div#img-nav a {margin-left: 5px; height: 10px; width: 10px; float: left; border: 1px solid #FF6600; color: #B8C4CF; font-size:0px}
+
+.nav-active { background-color: #FF6600; color: #FFF; }
+
+#img-wrapper { max-width: 770px; margin-top: 80px;}
