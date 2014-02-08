@@ -22,6 +22,16 @@ div.container { width: 1000px; padding: 0px; }
 
 .bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
 
+/* login */
+.form-signin { max-width: 330px; margin-top: 80px; }
+.form-signin h2 { margin-bottom: 60px; }
+.form-signin input { margin-top: 20px; }
+.form-signin button { margin-top: 20px; }
+.form-signin #bmy-links { margin-top: 10px; }
+.bmy-link-line { line-height: 24px; }
+.bmy-link-line a { display: inline-block; min-width: 160px; font-size: 16px; }
+.bmy-link-line a:first { margin-right: 10px; }
+
 /* navbar style */
 a.navbar-brand { padding: 10px;}
 .navbar-brand img { opacity: 0.9; filter:alpha(opacity=90); }
