@@ -57,6 +57,17 @@
 			showloginpics("http://bbs.xjtu.edu.cn/bmyMainPic/using/hanjia-20140123-20140219.jpg;BMY/home?B=XJTUnews");
 
 			$(document).ready(function (){
+				// load login pics
+				$.ajax({
+					type: "GET",
+					url: "api/meta/loginpics",
+					dataType: "json",
+					success: function(data) {
+						if(data.errcode == 0)
+							showloginpics(data.pics);
+					}
+				})
+
 				var userid = localStorage.userid;
 				var sessid = localStorage.sessid;
 				var is_local_rmbme = localStorage.is_rmbme;
