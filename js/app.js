@@ -36,7 +36,7 @@ App.IndexRoute = Ember.Route.extend({
 
 		bmy_api_top10_req.pull().then(function(data) {
 			var d = data.articlelist;
-			for(var i=0; i<3; i++) {
+			for(var i=0; i<3 && i< d.length; i++) {
 				d[i].hot = true;
 			}
 			controller.set('articlelist_top10', d);
