@@ -1,4 +1,4 @@
-﻿var pause=false;
+var pause=false;
 
 function showloginpics(pics){
     var list=pics.split(";;");
@@ -6,7 +6,7 @@ function showloginpics(pics){
     for(i=0;i<list.length;++i){
         // insert pics
 		var pic=list[i].split(";");
-		$('<a href="'+ pic[1] +'" target="_blank"><img id="pic' + i + '" src="' + pic[0] + '"/></a>').appendTo('div#img-container');
+		$('<a href="http://bbs.xjtu.edu.cn/'+ pic[1] +'" target="_blank"><img id="pic' + i + '" src="' + pic[0] + '"/></a>').appendTo('div#img-container');
         /*if(list.length>1){
             //insert nav-buttons
             // $('<a id="nav-button-'+i+'">'+i+'</a>').appendTo('div#img-nav');
