@@ -107,6 +107,7 @@ function load_section_dropdown() {
 
 // BMYBBS Classes
 var BMYAPIRequest = Class.extend({
+	async: true,
 	init: function(url) {
 		this.url = url;
 	},
@@ -122,6 +123,7 @@ var BMYAPIRequest = Class.extend({
 		return $.ajax(this.url, {
 			type: "GET",
 			dataType: 'json',
+			async: this.async,
 			success: function(data) {
 				return data;
 			}
@@ -182,11 +184,19 @@ var BMYAPIArticleListRequest = BMYAPIRequest.extend({
 					break;
 			}
 		}
+
+		if(typeof(obj.async) != "undefined") {
+			this.async = obj.async;
+		}
 	}
 });
 
 var BMYAPIBoardRequest = BMYAPIRequest.extend({
 	init: function(obj) {
 		this.url = 'api/board/info?bname='+obj.name;
+
+		if(typeof(obj.async) != "undefined") {
+			this.async = obj.async;
+		}
 	}
 });
