@@ -169,6 +169,8 @@ var BMYAPIArticleListRequest = BMYAPIRequest.extend({
 						this.url = this.url + "&count=" + obj.count;
 					if(typeof(obj.startnum) != "undefined")
 						this.url = this.url + "&startnum=" + obj.startnum;
+					if(typeof(obj.page) != "undefined")
+						this.url = this.url + "&page=" + obj.page;
 					break;
 
 				case "thread":
