@@ -19,6 +19,12 @@ var bmysecstrs = [
 	{ id: 'C', name: "俱乐部区" }
 ];
 
+function get_bmysec_name(sec_id) {
+	return $.grep(bmysecstrs, function(e) {
+		return e.id == sec_id;
+	})[0].name;
+}
+
 function load_personal_status(callback) {
 	if(typeof(localStorage.userid) == 'undefined') {
 		$('#bmy-ps-info').html("<span id='login-button' class='btn btn-success navbar-btn'>登录</span>");
