@@ -75,7 +75,7 @@
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<button id="reg-btn" class="btn btn-primary btn-lg">注册</button>
+						<span id="reg-btn" class="btn btn-primary btn-lg">注册</span>
 					</div>
 				</div>
 			</form>
@@ -96,7 +96,7 @@
 					});
 				});
 
-				$("reg-btn").click(function() {
+				$("#reg-btn").click(function() {
 					var reg_userid = $('#reg-username').val();
 					var reg_passwd = $('#reg-password').val();
 					var reg_active = $('#reg-activecode').val().toUpperCase();
