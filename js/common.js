@@ -114,6 +114,7 @@ function load_section_dropdown() {
 // BMYBBS Classes
 var BMYAPIRequest = Class.extend({
 	async: true,
+	postData: { },
 	init: function(url) {
 		this.url = url;
 	},
@@ -138,7 +139,18 @@ var BMYAPIRequest = Class.extend({
 		});
 	},
 	post: function() {
-
+		this.varify();
+		return $.ajax(this.url, {
+			type: "POST",
+			dataType: 'json',
+			data: JSON.stringify(this.postData),
+			async: this.async,
+			success: function(data) {
+				return data;
+			}
+		}).then(function(data) {
+			return data;
+		});
 	}
 });
 
