@@ -114,16 +114,18 @@ function load_section_dropdown() {
 // BMYBBS Classes
 var BMYAPIRequest = Class.extend({
 	async: true,
-	postData: { },
+	postData: "",
 	init: function(url) {
 		this.url = url;
 	},
-	varify: function() {
+	varify: function(type) {
 		this.url = this.url + "&appkey=" + appkey;
 		if(typeof(localStorage.userid) != "undefined")
 			this.url = this.url + "&userid=" + localStorage.userid;
 		if(typeof(localStorage.sessid) != "undefined")
 			this.url = this.url + "&sessid=" + localStorage.sessid;
+		if(typeof(type) != "undefined" && type == "POST" && typeof(localStorage.token) != "undefined")
+			this.url = this.url + "&token=" + localStorage.token;
 	},
 	pull: function() {
 		this.varify();
@@ -139,14 +141,17 @@ var BMYAPIRequest = Class.extend({
 		});
 	},
 	post: function() {
-		this.varify();
+		this.varify("POST");
 		return $.ajax(this.url, {
 			type: "POST",
 			dataType: 'json',
-			data: JSON.stringify(this.postData),
+			data: this.postData,
 			async: this.async,
 			success: function(data) {
-				return data;
+				if(data.errcode == 0) {
+					localStorage.token = data.token;
+					return data;
+				}
 			}
 		}).then(function(data) {
 			return data;
@@ -163,6 +168,21 @@ var BMYAPIArticleRequest = BMYAPIRequest.extend({
 
 		// 初始化参数
 		this.url += "?aid="+obj.aid.toString()+"&board="+obj.board;
+
+		if(typeof(obj.async) != "undefined")
+			this.async = obj.async;
+	}
+});
+
+var BMYAPIArticlePostRequest = BMYAPIRequest.extend({
+	init: function(obj) {
+		if(typeof(obj.type) == "undefine" || (obj.type=="NewPost")) {
+			this.url = 'api/article/post?board=' + obj.board + '&title=' + obj.title;
+		} else if(obj.type == "Reply") {
+			this.url = 'api/article/reply?board=' + obj.board + '&title=' + obj.title + '&ref=' + obj.ref + '&rid=' + obj.rid + '&th=' + obj.thread;
+		}
+
+		this.postData = "content=" + encodeURIComponent(obj.content);
 
 		if(typeof(obj.async) != "undefined")
 			this.async = obj.async;
