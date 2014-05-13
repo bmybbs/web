@@ -33,9 +33,9 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">导读</a></li>
+						<li class="active">{{#link-to 'index'}}导读{{/link-to}}</li>
 						<li><a href="#">热门</a></li>
-						<li><a href="#">收藏</a></li>
+						<li>{{#link-to 'fav'}}收藏{{/link-to}}</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">分区 <b class="caret"></b></a>
 							<ul class="dropdown-menu" id="nav-section-dropdown"></ul>
@@ -210,9 +210,6 @@
 				<div>想要申请进站？</div>
 				系统美工版/ArtDesign
 			</div>
-			<div id="dashboard-kexue" class="bmy-bg-color-red2 dashboard-banner-small">
-				深入落实学习科学发展观
-			</div>
 			<div id="dashboard-zhaopin" class="bmy-bg-color-blue2 dashboard-banner-small">
 				招聘信息
 			</div>
@@ -226,18 +223,134 @@
 
 	<script type="text/x-handlebars" data-template-name="board">
 		{{#if is_loaded_board}}
-		{{board-header board=board}}
+			{{board-header board=board}}
+			{{#if hasHotItems}}
+				{{board-hotitems hot_topics=board.hot_topic}}
+			{{/if}}
+			{{board-toolbar board=board}}
 		{{/if}}
-		{{#if hasHotItems}}
-			{{board-hotitems hot_topics=board.hot_topic}}
-		{{/if}}
-		{{board-toolbar}}
+
 		{{#if is_loaded_articlelist}}
-		{{article-list articles=articles}}
+			{{article-list articles=articles}}
 		{{/if}}
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="boardlist">
+		<h2>{{secname}}</h2>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>版面名</th>
+					<th>中文名</th>
+					<th>版主</th>
+					<th>文章数</th>
+					<th>人气值</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{#if is_loaded_boardlist}}
+			{{#each boardlist}}
+				<tr>
+					<td>{{BMYBoardLink this}}</td>
+					<td>{{zh_name}}</td>
+					<td>{{BMYBigBM bm}}</td>
+					<td>{{article_num}}</td>
+					<td>{{score}}</td>
+				</tr>
+			{{/each}}
+			{{/if}}
+			</tbody>
+		</table>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="articleRead">
+		{{#if is_loaded_board}}
+			{{board-header board=board}}
+		{{/if}}
+
+		{{#if is_loaded_article}}
+			{{article-toolbar article=article}}
+			{{article-content article=article}}
+		{{/if}}
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="articlePost">
+		{{#if is_loaded_board}}
+			{{board-header board=board}}
+		{{/if}}
+
+		{{#if is_loaded_article}}
+			{{#with article}}
+		<div id="post-box">
+			<div id="post-form" class="float-left">
+			{{input id="article-title" type="text" value=title class="form-control input-lg" autofocus="" placeholder="标题"}}
+			{{textarea value=content class="form-control" id="article-content" rows="20" placeholder="想和小陶人们说点什么呢？"}}
+			<button {{action 'doneEditing'}} id="btn-post" class="btn btn-primary btn-lg">完成</button>
+			<p>
+				{{input type="hidden" id="post_ref" value=ref}}
+				{{input type="hidden" id="post_rid" value=rid}}
+				{{input type="hidden" id="post_board" value=board}}
+				{{input type="hidden" id="post_thread" value=thread}}
+				{{input type="hidden" id="post_type" value=type}}
+			</p>
+			</div>
+
+			<div id="post-tips" class="float-right alert alert-info">
+				<h4>编辑提示</h4>
+				<p>bla bla bla</p>
+				<ul>
+					<li>[ESC][0;31m红色[ESC][0m</li>
+					<li>[ESC][0;32m绿色[ESC][0m</li>
+				</ul>
+				<p>bla bla bla</p>
+				<p>bla bla bla</p>
+				<p>bla bla bla</p>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+			{{/with}}
+		{{/if}}
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="articleReply">
+		{{#if is_loaded_board}}
+		{{board-header board=board}}
+		{{/if}}
+
+		{{#if is_loaded_article}}
+		{{#with article}}
+		<div id="post-box">
+			<div id="post-form" class="float-left">
+				{{input id="article-title" type="text" value=title class="form-control input-lg" autofocus="" placeholder="标题"}}
+				{{textarea value=content class="form-control" id="article-content" rows="20" placeholder="想和小陶人们说点什么呢？"}}
+				<button {{action 'doneEditing'}} id="btn-post" class="btn btn-primary btn-lg">完成</button>
+				<p>
+					{{input type="hidden" id="post_ref" value=ref}}
+					{{input type="hidden" id="post_rid" value=rid}}
+					{{input type="hidden" id="post_board" value=board}}
+					{{input type="hidden" id="post_thread" value=thread}}
+					{{input type="hidden" id="post_type" value=type}}
+				</p>
+			</div>
+
+			<div id="post-tips" class="float-right alert alert-info">
+				<h4>编辑提示</h4>
+				<p>bla bla bla</p>
+				<ul>
+					<li>[ESC][0;31m红色[ESC][0m</li>
+					<li>[ESC][0;32m绿色[ESC][0m</li>
+				</ul>
+				<p>bla bla bla</p>
+				<p>bla bla bla</p>
+				<p>bla bla bla</p>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+		{{/with}}
+		{{/if}}
 	</script>
 
 	<!-- components -->
@@ -250,10 +363,10 @@
 					{{else}}
 						<span class='bmy-span-icon bmy-bg-color-gray1'></span>
 					{{/if}}
-					<span><a href="#">{{title}}</a></span>
+					<span>{{BMYArticleLinkFake this}}</span>
 				</div>
 				<div class="float-right">
-					<span class='dashboard-item-author'><a href="#">{{author}}</a>@<a href="#" class="dashboard-item-board">{{board}}</a></span>
+					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLinkFake board}}</span>
 					{{#if type}}
 						{{BMYTime tid}}
 					{{else}}
@@ -270,10 +383,10 @@
 			<div class="dashboard-item">
 				<div class="dashboard-item-title float-left">
 					<span class="bmy-span-icon bmy-bg-color-gray1"></span>
-					<span><a href="#">{{title}}</a></span>
+					<span>{{BMYArticleLinkFake this}}</span>
 				</div>
 				<div class="float-right">
-					<span class='dashboard-item-author'><a href="#">{{author}}</a>@<a href="#" class="dashboard-item-board">{{board}}</a></span>
+					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLinkFake board}}</span>
 					{{#if type}}
 						{{BMYTime tid}}
 					{{else}}
@@ -288,7 +401,7 @@
 	<script type="text/x-handlebars" id="components/announce-list">
 		{{#each articles}}
 			<div class="dashboard-item">
-				<span><a href="#">{{title}}</a></span>
+				<span>{{BMYArticleLinkFake this}}</span>
 			</div>
 		{{/each}}
 	</script>
@@ -298,8 +411,8 @@
 			{{#each articles}}
 			<tr>
 				<td>{{num}}</td>
-				<td>{{title}}</td>
-				<td>{{author}}</td>
+				<td>{{BMYArticleLinkFake this}}</td>
+				<td><span class="glyphicon glyphicon-user user-icon"></span>{{author}}</td>
 				<td>{{BMYTime aid}}</td>
 			</tr>
 			{{/each}}
@@ -321,14 +434,11 @@
 	</script>
 
 	<script type="text/x-handlebars" id="components/board-header">
-		{{#with board}}
-		<header>
+		<header id="bmy-board-header">
 			<div class="float-left">
 				<div class="board-header-title">
-					<a id="board-title-zh" href="#">{{zh_name}}</a>
-					<a id="board-title-en" href="#">{{name}}</a>
-					/
-					<a id="board-title-section" href="#">{{BMYSecName secstr}}</a>
+					<span id="board-title-zh">{{BMYBoardZhLink board}}</span>
+					<span id="board-title-en">{{BMYBoardLink board}}&nbsp;/&nbsp;{{BMYSectionLink board}}</span>
 				</div>
 
 				<div>
@@ -338,19 +448,18 @@
 
 			<div class="float-right">
 				<div>
-					<span class="board-header-status-item">今日新帖<span class="badge">{{today_new}}</span></span>
-					<span class="board-header-status-item">在线<span class="badge">{{inboard_num}}</span></span>
-					<span class="board-header-status-item">人气值<span class="badge">{{score}}</span></span>
+					<span class="board-header-status-item">今日新帖<span class="badge">{{board.today_new}}</span></span>
+					<span class="board-header-status-item">在线<span class="badge">{{board.inboard_num}}</span></span>
+					<span class="board-header-status-item">人气值<span class="badge">{{board.score}}</span></span>
 				</div>
-				<div>版主&nbsp;/{{BMYBigBM bm}}</div>
-				{{#if hasSmallBM}}
-				<div>小版主&nbsp;/{{BMYSmallBM bm}}</div>
+				<div>版主&nbsp;/{{BMYBigBM board.bm}}</div>
+				{{#if board.hasSmallBM}}
+				<div>小版主&nbsp;/{{BMYSmallBM board.bm}}</div>
 				{{/if}}
 			</div>
 
 			<div class="clear"></div>
 		</header>
-		{{/with}}
 	</script>
 
 	<script type="text/x-handlebars" id="components/board-hotitems">
@@ -366,11 +475,11 @@
 	</script>
 
 	<script type="text/x-handlebars" id="components/board-toolbar">
-		<div id="board-operation">
-			<div id="board-publish">
+		<div class="bmy-toolbar">
+			<div id="board-publish" class="dropdown">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
 				<ul class="dropdown-menu" role="menu">
-					<li><a id="post-button" href="#">发表文章</a></li>
+					<li>{{BMYBoardNewLink board}}</li>
 					<li><a href="#">模板发文</a></li>
 				</ul>
 			</div>
@@ -386,21 +495,66 @@
 			</div>
 
 			<div id="board-paging" class="float-right">
-				<span><a>首页</a> / <a>上一页</a> / <a>下一页</a> / <a>末页</a></span>
-				<form>
-					<input type="text">
-					<button type="submit">&gt;</button>
+				<span>{{BMYBoardPageLink board}}</span>
+				<form class="form-inline" role="form">
+					<div class="form-group"><input type="text" class="form-control"></div>
+					<span class="btn btn-default">&gt;</span>
 				</form>
-				<span>2122 / 2122</span>
+				<span>{{board.paging.page}} / {{board.paging.pages}}</span>
 			</div>
 		</div>
+	</script>
+
+	<script type="text/x-handlebars" id="components/article-toolbar">
+
+	</script>
+
+	<script type="text/x-handlebars" id="components/article-content">
+		<section id="bmy-articles">
+		<div class='article-item'>
+			<div class='float-left article-author-info'>
+				<div class='article-author'><span class="glyphicon glyphicon-user user-icon"></span>{{article.author}}</div>
+				<div class='article-author-func'>
+					<a class='sendmail-btn' href="#">发送站内信</a>
+					<a class='addfriend-btn' href="#">加为好友</a>
+				</div>
+			</div>
+
+			<div class='float-right article-main'>
+				<div class='article-title'>
+					<div class='float-left'>{{article.title}}</div>
+					<div class='float-right btn-group'>
+						{{BMYArticleReplyLink}}
+						<button type='button' class='btn btn-default dropdown-toggle' data-toggle="dropdown">
+							<span class='caret'></span>
+							<span class='sr-only'>Toggle Dropdown</span>
+						</button>
+						<ul class='dropdown-menu' role='menu'>
+							<li><a href='#'>同主题由此展开</a></li>
+							<li class='divider'></li>
+							<li><a href='#'>同主题列表</a></li>
+							<li><a href='#'>同主题从主楼展开</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class='article-body'>{{BMYArticleContent article.content}}</div>
+			</div>
+
+			<div class='clear'></div>
+		</div>
+		</section>
+	</script>
+
+	<script type="text/x-handlebars" id="components/article-edit">
+
 	</script>
 
 	<script src="static/js/jquery-1.10.2.min.js"></script>
 	<script src="static/js/jquery.simple.inheritance.js"></script>
 	<script src="static/js/jquery.bpopup.min.js"></script>
 	<script src="static/js/handlebars-1.3.0.js"></script>
-	<script src="static/js/ember-1.3.1.min.js"></script>
+	<script src="static/js/ember-1.5.0.min.js"></script>
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/js/moment-with-langs.min.js"></script>
 	<script src="js/common.js"></script>
