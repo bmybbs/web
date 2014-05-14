@@ -343,7 +343,7 @@ App.ArticleReplyRoute = Ember.Route.extend({
 			if(data.errcode == 0) {
 				var a = {
 					'board': model.board_name,
-					'title': 'Re: '+data.title,
+					'title': (data.title.substr(0, 4) == 'Re: ') ? (data.title) : ('Re: '+data.title),
 					'ref': model.aid,
 					'rid': data.num,
 					'content': ' \n【 在 ' + data.author + ' 的大作中提到: 】\n'+ data.content,
