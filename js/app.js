@@ -346,7 +346,7 @@ App.ArticleReplyRoute = Ember.Route.extend({
 					'title': (data.title.substr(0, 4) == 'Re: ') ? (data.title) : ('Re: '+data.title),
 					'ref': model.aid,
 					'rid': data.num,
-					'content': ' \n【 在 ' + data.author + ' 的大作中提到: 】\n'+ data.content,
+					'content': '\n【 在 ' + data.author + ' 的大作中提到: 】\n: '+ data.content.replace(/\n/g, '\n: '),
 					'thread': data.thread,
 					'type': 'Reply'
 				};
