@@ -84,7 +84,7 @@ span#logout-button:hover { color: #262626; text-decoration: none; background-col
 .dashboard-item span { display: inline-block; }
 .dashboard-item-author { margin-left: 25px; font-size: 10px; }
 .dashboard-item-board { display: inline-block; width: 75px; margin-right: 5px; }
-.dashboard-sec { padding: 0 15px 0 0; border-bottom: #D5D5D5 1px solid; margin-bottom: 10px; }
+.dashboard-sec { padding: 0 0 15px; border-bottom: #D5D5D5 1px solid; margin-bottom: 10px; }
 
 #random-thread { color: white; text-align: center; padding-top: 60px; line-height: 14px; }
 .dashboard-header span { display: block; width: 100%; margin-bottom: 14px; }
