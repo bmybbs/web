@@ -363,10 +363,10 @@
 					{{else}}
 						<span class='bmy-span-icon bmy-bg-color-gray1'></span>
 					{{/if}}
-					<span>{{BMYArticleLinkFake this}}</span>
+					<span>{{BMYArticleLink this}}</span>
 				</div>
 				<div class="float-right">
-					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLinkFake board}}</span>
+					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLink this}}</span>
 					{{#if type}}
 						{{BMYTime tid}}
 					{{else}}
@@ -383,10 +383,10 @@
 			<div class="dashboard-item">
 				<div class="dashboard-item-title float-left">
 					<span class="bmy-span-icon bmy-bg-color-gray1"></span>
-					<span>{{BMYArticleLinkFake this}}</span>
+					<span>{{BMYArticleLink this}}</span>
 				</div>
 				<div class="float-right">
-					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLinkFake board}}</span>
+					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLink this}}</span>
 					{{#if type}}
 						{{BMYTime tid}}
 					{{else}}
@@ -401,7 +401,7 @@
 	<script type="text/x-handlebars" id="components/announce-list">
 		{{#each articles}}
 			<div class="dashboard-item">
-				<span>{{BMYArticleLinkFake this}}</span>
+				<span>{{BMYArticleLink this}}</span>
 			</div>
 		{{/each}}
 	</script>

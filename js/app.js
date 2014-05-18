@@ -408,7 +408,8 @@ Ember.Handlebars.helper('BMYTime', function(value, option) {
 });
 
 Ember.Handlebars.helper('BMYArticleLink', function(value, option) {
-
+	var link = "<a href='#/section/" + value.secstr + "/" + value.board + "/" + value.aid + "'>" + value.title + "</a>";
+	return new Handlebars.SafeString(link);
 });
 
 // todo 直接读取 url # 后面的部分，需要改进
@@ -418,7 +419,8 @@ Ember.Handlebars.helper('BMYArticleReplyLink', function(value, option) {
 });
 
 Ember.Handlebars.helper('BMYBoardLink', function(value, option) {
-	var link = "<a href='#/section/" + value.secstr + "/" + value.name + "'>" + value.name + "</a>";
+	var name = (typeof(value.name)=="undefined") ? value.board : value.name;	// 为 article_list 接口准备
+	var link = "<a href='#/section/" + value.secstr + "/" + name + "'>" + name + "</a>";
 	return new Handlebars.SafeString(link);
 });
 
