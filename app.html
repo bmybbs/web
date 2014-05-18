@@ -233,6 +233,10 @@
 		{{#if is_loaded_articlelist}}
 			{{article-list articles=articles}}
 		{{/if}}
+
+		{{#if is_loaded_boardtop}}
+			{{article-list articles=boardtop}}
+		{{/if}}
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="boardlist">

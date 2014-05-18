@@ -221,6 +221,10 @@ App.BoardRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
 		controller.set('model', model);
 
+		if(typeof(localStorage.boardtoptype) == "undefined")
+			localStorage.boardtoptype = true;	// 置顶模式
+		controller.set('boardtoptype', localStorage.boardtoptype);
+
 		var b = new BMYAPIBoardRequest({ "name": model.board_name });
 		b.pull().then(function(data) {
 			controller.set('hasHotItems', (data.hot_topic.length>0));
@@ -238,6 +242,14 @@ App.BoardRoute = Ember.Route.extend({
 			controller.set('articles', data.articlelist);
 			controller.set('is_loaded_articlelist', true);
 		});
+
+		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": model.board_name });
+		bt.pull().then(function(data) {
+			if(data.errcode == 0) {
+				controller.set('boardtop', data.articlelist);
+				controller.set('is_loaded_boardtop', true);
+			}
+		});
 	}
 });
 
@@ -247,6 +259,9 @@ App.BoardPageRoute = Ember.Route.extend({
 	},
 	setupController: function(controller, model) {
 		controller.set('model', model);
+
+		if(typeof(localStorage.boardtoptype) == "undefined")
+			localStorage.boardtoptype = true;	// 置顶模式
 
 		var b = new BMYAPIBoardRequest({ "name": model.board_name });
 		b.pull().then(function(data) {
@@ -264,6 +279,14 @@ App.BoardPageRoute = Ember.Route.extend({
 		al.pull().then(function(data) {
 			controller.set('articles', data.articlelist);
 			controller.set('is_loaded_articlelist', true);
+		});
+
+		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": model.board_name });
+		bt.pull().then(function(data) {
+			if(data.errcode == 0) {
+				controller.set('boardtop', data.articlelist);
+				controller.set('is_loaded_boardtop', true);
+			}
 		});
 	},
 	renderTemplate: function() {

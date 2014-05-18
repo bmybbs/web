@@ -235,6 +235,10 @@ var BMYAPIArticleListRequest = BMYAPIRequest.extend({
 					if(typeof(obj.startnum) != "undefined")
 						this.url = this.url + "&startnum=" + obj.startnum;
 					break;
+
+				case "boardtop":
+					this.url = this.url + "&board=" + obj.board;
+					break;
 			}
 		}
 
