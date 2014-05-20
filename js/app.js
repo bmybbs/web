@@ -11,6 +11,9 @@ App.Router.map(function() {
 	this.resource('articleRead', { path: '/section/:sec_id/:board_name/:aid' });
 	this.resource('articlePost', { path: '/section/:sec_id/:board_name/new' });
 	this.resource('articleReply', { path: '/section/:sec_id/:board_name/:aid/reply' });
+
+	this.resource('boardThread', { path: '/section/:sec_id/:board_name/thread' });
+	this.resource('articleThread', { path: '/section/:sec_id/:board_name/thread/:tid' });
 });
 
 App.ApplicationController = Ember.Controller.extend({
@@ -276,6 +279,45 @@ App.BoardPageRoute = Ember.Route.extend({
 
 
 		var al = new BMYAPIArticleListRequest({ "type": "board", "board":model.board_name, "btype":"0", "page":model.page_num});
+		al.pull().then(function(data) {
+			controller.set('articles', data.articlelist);
+			controller.set('is_loaded_articlelist', true);
+		});
+
+		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": model.board_name });
+		bt.pull().then(function(data) {
+			if(data.errcode == 0) {
+				controller.set('boardtop', data.articlelist);
+				controller.set('is_loaded_boardtop', true);
+			}
+		});
+	},
+	renderTemplate: function() {
+		this.render('board');
+	}
+});
+
+App.BoardThreadRoute = Ember.Route.extend({
+	model: function(params) {
+		return params;
+	},
+	setupController: function(controller, model) {
+		controller.set('model', model);
+
+		if(typeof(localStorage.boardtoptype) == "undefined")
+			localStorage.boardtoptype = true;
+		controller.set('boardtoptype', localStorage.boardtoptype);
+
+		var b = new BMYAPIBoardRequest({ "name": model.board_name });
+		b.pull().then(function(data) {
+			controller.set('hasHotItems', (data.hot_topic.length>0));
+			var pages = Math.ceil(data.thread_num / 20);
+			data.paging = {"page": pages, "pages": pages};
+			controller.set('board', data);
+			controller.set('is_loaded_board', true);
+		});
+
+		var al = new BMYAPIArticleListRequest({ "type": "board", "board": model.board_name, "btype": "t" });
 		al.pull().then(function(data) {
 			controller.set('articles', data.articlelist);
 			controller.set('is_loaded_articlelist', true);
