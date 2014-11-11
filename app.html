@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 	<meta charset="utf-8">
 	<title>bmy</title>
@@ -227,7 +228,7 @@
 			{{#if hasHotItems}}
 				{{board-hotitems hot_topics=board.hot_topic}}
 			{{/if}}
-			{{board-toolbar board=board}}
+			{{board-toolbar data=this}}
 		{{/if}}
 
 		{{#if is_loaded_articlelist}}
@@ -479,18 +480,24 @@
 	</script>
 
 	<script type="text/x-handlebars" id="components/board-toolbar">
+		{{log 'all: ' this}}
 		<div class="bmy-toolbar">
 			<div id="board-publish" class="dropdown">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
 				<ul class="dropdown-menu" role="menu">
-					<li>{{BMYBoardNewLink board}}</li>
+					<li>{{BMYBoardNewLink data.board}}</li>
 					<li><a href="#">模板发文</a></li>
 				</ul>
 			</div>
 
 			<div id="board-list-mode" class="btn-group">
-				<button type="button" class="btn btn-default">一般模式</button>
+				{{#if data.thread_mode}}
+				<button {{action 'normalMode'}} type="button" class="btn btn-default">一般模式</button>
 				<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
+				{{else}}
+				<button type="button" class="btn btn-default" disabled="disabled">一般模式</button>
+				<button {{action 'threadMode'}} type="button" class="btn btn-default">主题模式</button>
+				{{/if}}
 			</div>
 
 			<div id="top-list-mode" class="btn-group">
@@ -499,12 +506,12 @@
 			</div>
 
 			<div id="board-paging" class="float-right">
-				<span>{{BMYBoardPageLink board}}</span>
+				<span>{{BMYBoardPageLink data.board}}</span>
 				<form class="form-inline" role="form">
 					<div class="form-group"><input type="text" class="form-control"></div>
 					<span class="btn btn-default">&gt;</span>
 				</form>
-				<span>{{board.paging.page}} / {{board.paging.pages}}</span>
+				<span>{{data.board.paging.page}} / {{data.board.paging.pages}}</span>
 			</div>
 		</div>
 	</script>
@@ -558,7 +565,7 @@
 	<script src="static/js/jquery.simple.inheritance.js"></script>
 	<script src="static/js/jquery.bpopup.min.js"></script>
 	<script src="static/js/handlebars-1.3.0.js"></script>
-	<script src="static/js/ember-1.5.0.min.js"></script>
+	<script src="static/js/ember-1.8.1.min.js"></script>
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/js/moment-with-langs.min.js"></script>
 	<script src="js/common.js"></script>
