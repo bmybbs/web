@@ -19,5 +19,6 @@ var app = new EmberApp();
 
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/moment/min/moment-with-locales.min.js');
+app.import('bower_components/bpopup/jquery.bpopup.min.js');
 
 module.exports = app.toTree();
