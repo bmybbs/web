@@ -1,4 +1,4 @@
-import BMYAPIRequest from 'BMYAPIRequest'
+import BMYAPIRequest from 'BMYAPIRequest';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
@@ -6,7 +6,7 @@ export default BMYAPIRequest.extend({
 
 		// TODO: 排序参数
 
-		if(typeof(obj.async) != "undefined") {
+		if(typeof(obj.async) !== "undefined") {
 			this.async = obj.async;
 		}
 	}
