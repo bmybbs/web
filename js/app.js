@@ -1,22 +1,5 @@
 App = Ember.Application.create();
 
-App.Router.map(function() {
-	this.resource('index', { path: '/' });
-	this.resource('section', { path: '/section/:sec_id' });
-	this.resource('fav', { path: '/fav' });
-
-	this.resource('board', { path: '/section/:sec_id/:board_name' });
-	this.resource('boardThread', { path: '/section/:sec_id/:board_name/thread' });
-	this.resource('boardPage', { path: '/section/:sec_id/:board_name/page/:page_num'});
-
-	this.resource('articleRead', { path: '/section/:sec_id/:board_name/:aid' });
-	this.resource('articlePost', { path: '/section/:sec_id/:board_name/new' });
-	this.resource('articleReply', { path: '/section/:sec_id/:board_name/:aid/reply' });
-
-
-	this.resource('articleThread', { path: '/section/:sec_id/:board_name/thread/:tid' });
-});
-
 App.ApplicationController = Ember.Controller.extend({
 	searchcommand: ''
 });
