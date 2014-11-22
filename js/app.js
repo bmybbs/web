@@ -6,13 +6,14 @@ App.Router.map(function() {
 	this.resource('fav', { path: '/fav' });
 
 	this.resource('board', { path: '/section/:sec_id/:board_name' });
+	this.resource('boardThread', { path: '/section/:sec_id/:board_name/thread' });
 	this.resource('boardPage', { path: '/section/:sec_id/:board_name/page/:page_num'});
 
 	this.resource('articleRead', { path: '/section/:sec_id/:board_name/:aid' });
 	this.resource('articlePost', { path: '/section/:sec_id/:board_name/new' });
 	this.resource('articleReply', { path: '/section/:sec_id/:board_name/:aid/reply' });
 
-	this.resource('boardThread', { path: '/section/:sec_id/:board_name/thread' });
+
 	this.resource('articleThread', { path: '/section/:sec_id/:board_name/thread/:tid' });
 });
 
@@ -228,6 +229,9 @@ App.BoardRoute = Ember.Route.extend({
 			localStorage.boardtoptype = true;	// 置顶模式
 		controller.set('boardtoptype', localStorage.boardtoptype);
 
+		localStorage.thread_mode = false;		// 用于在其他 templates 中传递值
+		controller.set('thread_mode', false);
+
 		var b = new BMYAPIBoardRequest({ "name": model.board_name });
 		b.pull().then(function(data) {
 			controller.set('hasHotItems', (data.hot_topic.length>0));
@@ -265,6 +269,10 @@ App.BoardPageRoute = Ember.Route.extend({
 
 		if(typeof(localStorage.boardtoptype) == "undefined")
 			localStorage.boardtoptype = true;	// 置顶模式
+
+
+		localStorage.thread_mode = false;		// 用于在其他 templates 中传递值
+		controller.set('thread_mode', false);
 
 		var b = new BMYAPIBoardRequest({ "name": model.board_name });
 		b.pull().then(function(data) {
@@ -426,6 +434,23 @@ App.ArticleReplyRoute = Ember.Route.extend({
 });
 
 // controllers
+App.BoardController = Ember.ObjectController.extend({
+	actions: {
+		threadMode: function() {
+			href.location += "/thread";
+		}
+	}
+});
+
+App.BoardThreadController = Ember.ObjectController.extend({
+	actions: {
+		normalMode: function() {
+			var current_url = href.location;
+			current_url.replace('/\/thread/', '');
+		}
+	}
+});
+
 App.ArticlePostController = Ember.ObjectController.extend({
 	actions: {
 		doneEditing: function() {
