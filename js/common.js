@@ -1,23 +1,5 @@
 // common variables
-var appkey = 'newweb';
 var popup;
-var bmysecstrs = [
-	{ id: '0', name: "本站系统" },
-	{ id: '1', name: "交通大学" },
-	{ id: '2', name: "开发技术" },
-	{ id: '3', name: "电脑应用" },
-	{ id: '4', name: "学术科学" },
-	{ id: '5', name: "社会科学" },
-	{ id: '6', name: "文学艺术" },
-	{ id: '7', name: "知性感性" },
-	{ id: '8', name: "体育运动" },
-	{ id: '9', name: "休闲音乐" },
-	{ id: 'G', name: "游戏天地" },
-	{ id: 'N', name: "新闻信息" },
-	{ id: 'H', name: "乡音乡情" },
-	{ id: 'A', name: "校务信息" },
-	{ id: 'C', name: "俱乐部区" }
-];
 
 function get_bmysec_name(sec_id) {
 	return $.grep(bmysecstrs, function(e) {
