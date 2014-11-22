@@ -475,11 +475,6 @@ App.ArticleReplyController = Ember.ObjectController.extend({
 	}
 });
 // helpers
-Ember.Handlebars.helper('BMYTime', function(value, option) {
-	var t = new moment.unix(value);
-	return t.format('YYYY.MM.DD HH:mm');
-});
-
 Ember.Handlebars.helper('BMYArticleLink', function(value, option) {
 	var link = "<a href='#/section/" + value.secstr + "/" + value.board + "/" + value.aid + "'>" + value.title + "</a>";
 	return new Handlebars.SafeString(link);
