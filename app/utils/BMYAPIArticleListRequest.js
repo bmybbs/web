@@ -1,8 +1,9 @@
 import BMYAPIRequest from './BMYAPIRequest';
+import ENV from 'bmy-new-web/config/environment';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
-		var baseURL = 'api/article/list?type=';
+		var baseURL = ENV.endpoint + 'api/article/list?type=';
 
 		if(typeof(obj.type) !== "undefined") {
 			this.url = baseURL + obj.type;

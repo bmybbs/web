@@ -34,7 +34,8 @@ module.exports = function(environment) {
       { id: 'H', name: "乡音乡情" },
       { id: 'A', name: "校务信息" },
       { id: 'C', name: "俱乐部区" }
-    ]
+    ],
+    endpoint: ''
   };
 
   if (environment === 'development') {
@@ -43,6 +44,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.endpoint = 'http://newtest.bmybbs.com/'
   }
 
   if (environment === 'test') {
@@ -58,7 +60,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.endpoint = 'https://www.bmybbs.com/'
   }
 
   return ENV;

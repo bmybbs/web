@@ -1,11 +1,12 @@
 import BMYAPIRequest from './BMYAPIRequest';
+import ENV from 'bmy-new-web/config/environment';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
 		if((typeof(obj.type) !== "undefined") && (obj.type==="RAW"))
-			this.url = 'api/article/getRAWContent';
+			this.url = ENV.endpoint + 'api/article/getRAWContent';
 		else
-			this.url = 'api/article/getHTMLContent';
+			this.url = ENV.endpoint + 'api/article/getHTMLContent';
 
 		// 初始化参数
 		this.url += "?aid="+obj.aid.toString()+"&board="+obj.board;
