@@ -1,4 +1,4 @@
-import BMYAPIRequest from 'BMYAPIRequest';
+import BMYAPIRequest from './BMYAPIRequest';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
