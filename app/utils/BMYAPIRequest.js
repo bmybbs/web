@@ -1,6 +1,7 @@
-import Class from 'class-extender';
 import Ember from 'ember';
-import config from './config/environment';
+import ENV from 'bmy-new-web/config/environment';
+
+/*global Class */
 
 export default Class.extend({
 	async: true,
@@ -9,7 +10,7 @@ export default Class.extend({
 		this.url = url;
 	},
 	varify: function(type) {
-		this.url = this.url + "&appkey=" + config.appkey;
+		this.url = this.url + "&appkey=" + ENV.appkey;
 		if(typeof(localStorage.userid) !== "undefined")
 			this.url = this.url + "&userid=" + localStorage.userid;
 		if(typeof(localStorage.sessid) !== "undefined")
