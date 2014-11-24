@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
 	this.resource('index', { path: '/' });
+	this.resource('dashboard');
 	this.resource('section', { path: '/section/:sec_id' });
 	this.resource('fav', { path: '/fav' });
 
