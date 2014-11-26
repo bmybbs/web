@@ -359,58 +359,6 @@
 	</script>
 
 	<!-- components -->
-	<script type="text/x-handlebars" id="components/topten-list">
-		{{#each articles}}
-			<div class='dashboard-item'>
-				<div class='dashboard-item-title float-left'>
-					{{#if hot}}
-						<span class='bmy-span-icon bmy-bg-color-red1'></span>
-					{{else}}
-						<span class='bmy-span-icon bmy-bg-color-gray1'></span>
-					{{/if}}
-					<span>{{BMYArticleLink this}}</span>
-				</div>
-				<div class="float-right">
-					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLink this}}</span>
-					{{#if type}}
-						{{BMYTime tid}}
-					{{else}}
-						{{BMYTime aid}}
-					{{/if}}
-				</div>
-				<div class="clear"></div>
-			</div>
-		{{/each}}
-	</script>
-
-	<script type="text/x-handlebars" id="components/sectop-list">
-		{{#each articles}}
-			<div class="dashboard-item">
-				<div class="dashboard-item-title float-left">
-					<span class="bmy-span-icon bmy-bg-color-gray1"></span>
-					<span>{{BMYArticleLink this}}</span>
-				</div>
-				<div class="float-right">
-					<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLink this}}</span>
-					{{#if type}}
-						{{BMYTime tid}}
-					{{else}}
-						{{BMYTime aid}}
-					{{/if}}
-				</div>
-				<div class="clear"></div>
-			</div>
-		{{/each}}
-	</script>
-
-	<script type="text/x-handlebars" id="components/announce-list">
-		{{#each articles}}
-			<div class="dashboard-item">
-				<span>{{BMYArticleLink this}}</span>
-			</div>
-		{{/each}}
-	</script>
-
 	<script type="text/x-handlebars" id="components/article-list">
 		<table class='table table-striped table-condensed'>
 			{{#each articles}}
