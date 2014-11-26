@@ -25,5 +25,6 @@ app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.t
 app.import('bower_components/moment/min/moment-with-locales.min.js');
 app.import('bower_components/bpopup/jquery.bpopup.min.js');
 app.import('bower_components/class-extender/index.js');
+app.import('bower_components/hashmap/hashmap.js');
 
 module.exports = app.toTree();
