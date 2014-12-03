@@ -16,7 +16,7 @@
     "bootstrap": "~3.3.1",
     "moment": "~2.8.4",
     "bpopup": "~0.10.0",
-    "class-extender": "~1.0.9",
+    "class-extender-ember-cli": "~1.0.10",
     "hashmap": "~1.2.0"
   }
 }
