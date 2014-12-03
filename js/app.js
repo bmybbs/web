@@ -319,21 +319,11 @@ App.ArticleReplyController = Ember.ObjectController.extend({
 	}
 });
 // helpers
-Ember.Handlebars.helper('BMYArticleLink', function(value, option) {
-	var link = "<a href='#/section/" + value.secstr + "/" + value.board + "/" + value.aid + "'>" + value.title + "</a>";
-	return new Handlebars.SafeString(link);
-});
 
 // todo 直接读取 url # 后面的部分，需要改进
 Ember.Handlebars.helper('BMYArticleReplyLink', function(value, option) {
 	var link = "<a class='btn btn-default' href='#" + location.href.split('#')[1] + "/reply'>回复本文</a>";
 	return new Ember.Handlebars.SafeString(link);
-});
-
-Ember.Handlebars.helper('BMYBoardLink', function(value, option) {
-	var name = (typeof(value.name)=="undefined") ? value.board : value.name;	// 为 article_list 接口准备
-	var link = "<a href='#/section/" + value.secstr + "/" + name + "'>" + name + "</a>";
-	return new Handlebars.SafeString(link);
 });
 
 Ember.Handlebars.helper('BMYBoardZhLink', function(value, option) {
