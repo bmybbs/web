@@ -6,14 +6,14 @@
 			{{else}}
 				<span class='bmy-span-icon bmy-bg-color-gray1'></span>
 			{{/if}}
-			<span>{{BMYArticleLink this}}</span>
+			<span>{{bmy-article-link this}}</span>
 		</div>
 		<div class="float-right">
-			<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{BMYBoardLink this}}</span>
+			<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{bmy-board-link this}}</span>
 			{{#if type}}
-				{{BMYTime tid}}
+				{{bmy-time tid}}
 			{{else}}
-				{{BMYTime aid}}
+				{{bmy-time aid}}
 			{{/if}}
 		</div>
 		<div class="clear"></div>
