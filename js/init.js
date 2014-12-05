@@ -6,19 +6,6 @@ $(document).ready(function() {
 	$('#commandbar').on('show.bs.dropdown', function() {
 		return false;
 	});
-	$('#commandbar input').keyup(function () {
-		if($('#commandbar input').val().length == 0)
-			$('#commandbar').removeClass('open');
-		else
-			$('#commandbar').addClass('open');
-	});
-	$('#commandbar input').blur(function() {
-		$('#commandbar').removeClass('open');
-	});
-	$('#commandbar input').focus(function () {
-		if($('#commandbar input').val().length > 0)
-			$('#commandbar').addClass('open');
-	});
 
 	// load personal status
 	load_personal_status(function() {

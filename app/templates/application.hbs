@@ -30,7 +30,7 @@
 			</ul>
 			<form class="navbar-form navbar-left" role="form">
 				<div class="form-group dropdown" id="commandbar">
-					{{input type="text" placeholder="搜索版面、用户、或者文章" class="form-control dropdown-toggle" data-toggle="dropdown" value=searchcommand}}
+					{{input type="text" placeholder="搜索版面、用户、或者文章" class="form-control dropdown-toggle" data-toggle="dropdown" value=searchcommand focus-in="commandbarFocusInInput" focus-out="commandbarFocusOutInput" on="keyUp" key-up="commandbarKeyUp"}}
 					<div class="input-group-btn">
 						<span class="btn btn-default" disabled="disabled"><i class="glyphicon glyphicon-search"></i></span>
 					</div>
