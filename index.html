@@ -15,39 +15,7 @@
 
 	<body>
 		<div class="container">
-			<div id="img-wrapper" class="float-right">
-				<div id="img-container"></div>
-				<div id="img-nav"></div>
-			</div>
 
-			<div class="form-signin float-left">
-				<h2>欢迎访问兵马俑 BBS</h2>
-				<div id="login-form" class="hidden">
-					<input class="form-control input-lg" autofocus="" id="username" type="text" placeholder="用户名">
-
-					<input class="form-control input-lg" id="password" type="password" placeholder="密码">
-					<label><input id="chk_remember" type="checkbox">记住我</label>
-					<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
-				</div>
-				<div id="direct-login" class="hidden">
-					<h3>您已登录系统，请直接进入</h3>
-					<button id="btn-direct-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
-				</div>
-				<div id="bmy-links">
-					<div class="bmy-link-line">
-						<a href="#">匿名登录</a>
-						<a href="#">telnet登录</a>
-					</div>
-					<div class="bmy-link-line">
-						<a href="#">CTerm工具下载</a>
-						<span id="newreg">新用户注册</span>
-					</div>
-					<div class="bmy-link-line">
-						<a href="#">老 Web</a>
-						<a href="#">找回密码</a>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div id="reg-box" class="popup">
 			<span class="bpopup-button b-close"><span>X</span></span>
@@ -114,17 +82,6 @@
 							}
 						}
 					});
-				});
-
-				// load login pics
-				$.ajax({
-					type: "GET",
-					url: "api/meta/loginpics",
-					dataType: "json",
-					success: function(data) {
-						if(data.errcode == 0)
-							showloginpics(data.pics);
-					}
 				});
 
 				var userid = localStorage.userid;
