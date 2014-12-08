@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import BMYAPIUserQueryRequest from '../utils/BMYAPIUserQueryRequest';
+import ENV from 'bmy-new-web/config/environment';
 
 var query_req = new BMYAPIUserQueryRequest({ });
 
@@ -13,7 +14,9 @@ export default Ember.Route.extend({
 	},
 	setupController: function(controller, model) {
 		this._super(controller, model);
+
 		var c = this;
+		controller.set('sections', ENV.bmysecstrs);
 		query_req.pull().then(function(data) {
 			if(data.errcode === 0) {
 				// 设置用户信息
