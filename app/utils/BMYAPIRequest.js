@@ -6,21 +6,22 @@ import ENV from 'bmy-new-web/config/environment';
 export default Class.extend({
 	async: true,
 	postData: "",
+	internal_url: "",
 	init: function(url) {
 		this.url = url;
 	},
 	varify: function(type) {
-		this.url = this.url + "&appkey=" + ENV.appkey;
+		this.internal_url = this.url + "&appkey=" + ENV.appkey;
 		if(typeof(localStorage.userid) !== "undefined")
-			this.url = this.url + "&userid=" + localStorage.userid;
+			this.internal_url = this.internal_url + "&userid=" + localStorage.userid;
 		if(typeof(localStorage.sessid) !== "undefined")
-			this.url = this.url + "&sessid=" + localStorage.sessid;
+			this.internal_url = this.internal_url + "&sessid=" + localStorage.sessid;
 		if(typeof(type) !== "undefined" && type === "POST" && typeof(localStorage.token) !== "undefined")
-			this.url = this.url + "&token=" + localStorage.token;
+			this.internal_url = this.internal_url + "&token=" + localStorage.token;
 	},
 	pull: function() {
 		this.varify();
-		return Ember.$.ajax(this.url, {
+		return Ember.$.ajax(this.internal_url, {
 			type: "GET",
 			dataType: 'json',
 			async: this.async,
@@ -33,7 +34,7 @@ export default Class.extend({
 	},
 	post: function() {
 		this.varify("POST");
-		return Ember.$.ajax(this.url, {
+		return Ember.$.ajax(this.internal_url, {
 			type: "POST",
 			dataType: 'json',
 			data: this.postData,
