@@ -14,6 +14,7 @@ export default Ember.ObjectController.extend({
 			var is_rmbme = $('input#chk_remember').is(':checked');
 
 			var url_login = ENV.endpoint + 'api/user/login?userid='+userid+'&passwd='+passwd+'&appkey=' + ENV.appkey;
+			var c=this;
 
 			$.ajax({
 				type: "GET",
@@ -28,8 +29,9 @@ export default Ember.ObjectController.extend({
 						localStorage.token  = data.token;
 						localStorage.is_rmbme = is_rmbme;
 						localStorage.is_login = true;
-
-						this.transitionToRoute('dashboard');
+						c.controllerFor('application').set('is_login', true);
+						c.controllerFor('application').set('userid', data.userid);
+						c.transitionToRoute('dashboard');
 					}
 				},
 				error: function(xhr, ajaxOptions, thrownError) {
