@@ -8,7 +8,7 @@
 	{{#if is_login}}
 	<div id="direct-login">
 		<h3>您已登录系统，请直接进入</h3>
-		<button id="btn-direct-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+		<button id="btn-direct-login" class="btn btn-primary btn-lg btn-block" type="submit" {{action 'redirect'}}>登录</button>
 	</div>
 	{{else}}
 	<div id="login-form">
@@ -16,7 +16,7 @@
 
 		<input class="form-control input-lg" id="password" type="password" placeholder="密码">
 		<label><input id="chk_remember" type="checkbox">记住我</label>
-		<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+		<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit" {{action 'login'}}>登录</button>
 	</div>
 	{{/if}}
 	<div id="bmy-links">
