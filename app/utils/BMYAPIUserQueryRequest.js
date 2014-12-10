@@ -12,13 +12,5 @@ export default BMYAPIRequest.extend({
 		if(typeof(obj.async) !== "undefined") {
 			this.async = obj.async;
 		}
-	}/*,
-	pull: function() {
-		if(typeof(localStorage.userid) === "undefined")
-			return Ember.RSVP.hash(
-				{ 'errcode': 1000 }
-			);
-		else
-			this._super();
-	}*/
+	}
 });
