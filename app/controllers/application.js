@@ -25,6 +25,9 @@ export default Ember.ObjectController.extend({
 			else
 				$('#commandbar').removeClass('open');
 		},
+		login: function() {
+			this.transitionToRoute('index');
+		},
 		logout: function() {
 			var url_logout = ENV.endpoint + 'api/user/logout?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + ENV.appkey;
 			var c = this;
