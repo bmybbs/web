@@ -20,7 +20,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">分区 <b class="caret"></b></a>
 					<ul class="dropdown-menu" id="nav-section-dropdown">
 						{{#each s in sections}}
-						<li><a href="#">{{s.id}}区&nbsp;{{s.name}}</a></li>
+						<li>{{#link-to 'section' s.id}}{{s.id}}区&nbsp;{{s.name}}{{/link-to}}</li>
 						{{/each}}
 					</ul>
 				</li>
