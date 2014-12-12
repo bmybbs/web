@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'bmy-new-web',
     environment: environment,
     baseURL: '/',
-    locationType: 'none',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
