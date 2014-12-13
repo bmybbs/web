@@ -5,26 +5,6 @@ App.ApplicationController = Ember.Controller.extend({
 });
 
 // routers
-App.SectionRoute = Ember.Route.extend({
-	model: function(params) {
-		return params;
-	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-
-		controller.set('secname', get_bmysec_name(model.sec_id));
-
-		var bl = new BMYAPIBoardListRequest({ "secstr": model.sec_id });
-		bl.pull().then(function(data) {
-			controller.set('boardlist', data.boardlist);
-			controller.set('is_loaded_boardlist', true);
-		});
-	},
-	renderTemplate: function() {
-		this.render('boardlist');
-	}
-});
-
 App.FavRoute = Ember.Route.extend({
 	model: function(params) {
 		return params;

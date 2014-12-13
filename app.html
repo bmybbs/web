@@ -40,35 +40,6 @@
 		{{/if}}
 	</script>
 
-	<script type="text/x-handlebars" data-template-name="boardlist">
-		<h2>{{secname}}</h2>
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th>版面名</th>
-					<th>中文名</th>
-					<th>版主</th>
-					<th>文章数</th>
-					<th>人气值</th>
-				</tr>
-			</thead>
-			<tbody>
-			{{#if is_loaded_boardlist}}
-			{{#each boardlist}}
-				<tr>
-					<td>{{BMYBoardLink this}}</td>
-					<td>{{zh_name}}</td>
-					<td>{{BMYBigBM bm}}</td>
-					<td>{{article_num}}</td>
-					<td>{{score}}</td>
-				</tr>
-			{{/each}}
-			{{/if}}
-			</tbody>
-		</table>
-	</script>
-
 	<script type="text/x-handlebars" data-template-name="articleRead">
 		{{#if is_loaded_board}}
 			{{board-header board=board}}

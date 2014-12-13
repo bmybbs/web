@@ -1,0 +1,24 @@
+<h2>{{section_name}}</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>版面名</th>
+			<th>中文名</th>
+			<th>版主</th>
+			<th>文章数</th>
+			<th>人气值</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#each board in boardlist}}
+		<tr>
+			<td>{{#link-to 'section.board' board.name}}{{board.name}}{{/link-to}}</td>
+			<td>{{board.zh_name}}</td>
+			<td>{{bmy-big-bm board.bm}}</td>
+			<td>{{board.article_num}}</td>
+			<td>{{board.score}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+</table>
