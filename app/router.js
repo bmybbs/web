@@ -8,16 +8,15 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	this.resource('index', { path: '/' });
 	this.resource('dashboard');
-	this.route('section', { path: '/section/:section_id' }, function() {
-		this.route('board', { path: '/:board_id' }, function() {
-			this.route('article', { path: '/:article_id' }, function() {
-				this.route('reply');
-				this.route('edit');
-			});
-			this.route('new');
-		});
-	});
-	this.resource('fav', { path: '/fav' });
+	this.route('section', { path: '/section/:section_id' });
+	this.route('board', { path: '/section/:section_id/:board_id' });
+
+	this.route('article', { path: '/section/:section_id/:board_id/:article_id' });
+	this.route('article-reply', { path: '/section/:section_id/:board_id/:article_id/reply' });
+	this.route('article-edit', { path: '/section/:section_id/:board_id/:article_id/edit' });
+	this.route('article-new', { path: '/section/:section_id/:board_id/new' });
+
+	this.resource('favourite', { path: '/favourite' });
 });
 
 export default Router;
