@@ -17,7 +17,8 @@ export default Ember.Route.extend({
 					return data.boardlist;
 				}
 			}),
-			section_name: get_bmysec_name(params.section_id)
+			section_name: get_bmysec_name(params.section_id),
+			section_id: params.section_id
 		});
 	},
 	renderTemplate: function() {
