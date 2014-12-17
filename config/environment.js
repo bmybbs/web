@@ -43,7 +43,7 @@ module.exports = function(environment) {
     'script-src': "'self' http://newtest.bmybbs.com:443 https://www.bmybbs.com",
     'font-src': "'self'",
     'connect-src': "'self' http://newtest.bmybbs.com:443 https://www.bmybbs.com",
-    'img-src': "'self' http://newtest.bmybbs.com:443 https://www.bmybbs.com",
+    'img-src': "'self' data: http://newtest.bmybbs.com:443 https://www.bmybbs.com",
     'style-src': "'self'",
     'media-src': "'self'"
   };
