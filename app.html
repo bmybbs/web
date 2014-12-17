@@ -130,10 +130,6 @@
 	</script>
 
 	<!-- components -->
-	<script type="text/x-handlebars" id="components/article-list">
-
-	</script>
-
 	<script type="text/x-handlebars" id="components/thread-list">
 		<table class="table table-striped table-condensed">
 			{{#each articles}}
@@ -146,35 +142,6 @@
 			</tr>
 			{{/each}}
 		</table>
-	</script>
-
-	<script type="text/x-handlebars" id="components/board-header">
-		<header id="bmy-board-header">
-			<div class="float-left">
-				<div class="board-header-title">
-					<span id="board-title-zh">{{BMYBoardZhLink board}}</span>
-					<span id="board-title-en">{{BMYBoardLink board}}&nbsp;/&nbsp;{{BMYSectionLink board}}</span>
-				</div>
-
-				<div>
-					<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
-				</div>
-			</div>
-
-			<div class="float-right">
-				<div>
-					<span class="board-header-status-item">今日新帖<span class="badge">{{board.today_new}}</span></span>
-					<span class="board-header-status-item">在线<span class="badge">{{board.inboard_num}}</span></span>
-					<span class="board-header-status-item">人气值<span class="badge">{{board.score}}</span></span>
-				</div>
-				<div>版主&nbsp;/{{BMYBigBM board.bm}}</div>
-				{{#if board.hasSmallBM}}
-				<div>小版主&nbsp;/{{BMYSmallBM board.bm}}</div>
-				{{/if}}
-			</div>
-
-			<div class="clear"></div>
-		</header>
 	</script>
 
 	<script type="text/x-handlebars" id="components/board-hotitems">

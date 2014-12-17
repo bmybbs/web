@@ -5,48 +5,6 @@ App.ApplicationController = Ember.Controller.extend({
 });
 
 // routers
-App.BoardRoute = Ember.Route.extend({
-	model: function(params) {
-		return params;
-	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-
-		if(typeof(localStorage.boardtoptype) == "undefined")
-			localStorage.boardtoptype = true;	// 置顶模式
-		controller.set('boardtoptype', localStorage.boardtoptype);
-
-		localStorage.thread_mode = false;		// 用于在其他 templates 中传递值
-		controller.set('thread_mode', false);
-
-		var b = new BMYAPIBoardRequest({ "name": model.board_name });
-		b.pull().then(function(data) {
-			controller.set('hasHotItems', (data.hot_topic.length>0));
-
-			var pages = Math.ceil(data.article_num / 20);
-			var page  = pages;
-			data.paging = {"page": page, "pages": pages};
-			controller.set('board', data);
-			controller.set('is_loaded_board', true);
-		});
-
-
-		var al = new BMYAPIArticleListRequest({ "type": "board", "board":model.board_name, "btype":"0"});
-		al.pull().then(function(data) {
-			controller.set('articles', data.articlelist);
-			controller.set('is_loaded_articlelist', true);
-		});
-
-		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": model.board_name });
-		bt.pull().then(function(data) {
-			if(data.errcode == 0) {
-				controller.set('boardtop', data.articlelist);
-				controller.set('is_loaded_boardtop', true);
-			}
-		});
-	}
-});
-
 App.BoardPageRoute = Ember.Route.extend({
 	model: function(params) {
 		return params;
@@ -286,22 +244,6 @@ Ember.Handlebars.helper('BMYArticleReplyLink', function(value, option) {
 	return new Ember.Handlebars.SafeString(link);
 });
 
-Ember.Handlebars.helper('BMYBoardZhLink', function(value, option) {
-	var link = "<a href='#/section/" + value.secstr + "/" + value.name + "'>" + value.zh_name + "</a>";
-	return new Handlebars.SafeString(link);
-});
-
-Ember.Handlebars.helper('BMYBoardLinkFake', function(value, option) {
-	// 创建一个伪版面链接，secstr 不正确，但是版面依旧可以显示。仅使用于导读页。
-	var link = "<a href='#/section/0/" + value + "' class='dashboard-item-board'>" + value + "</a>";
-	return new Handlebars.SafeString(link);
-});
-
-Ember.Handlebars.helper('BMYArticleLinkFake', function(value, option) {
-	var link = "<a href='#/section/0/" + value.board + "/" + value.aid + "'>" + value.title + "</a>";
-	return new Handlebars.SafeString(link);
-});
-
 Ember.Handlebars.helper('BMYSecName', function(value, option) {
 	return $.grep(bmysecstrs, function(e) {
 		return e.id == value;
@@ -345,13 +287,4 @@ Ember.Handlebars.helper('BMYBoardNewLink', function(value, option) {
 
 Ember.Handlebars.helper('BMYArticleContent', function(value, option) {
 	return new Handlebars.SafeString(value);
-});
-
-Ember.Handlebars.helper('BMYSectionLink', function(value, option) {
-	var sec_name = $.grep(bmysecstrs, function(e) {
-		return e.id == value.secstr;
-	})[0].name;
-
-	var link = "<a href='#/section/" + value.secstr.toString() + "'>" + sec_name + "</a>";
-	return new Handlebars.SafeString(link);
 });
