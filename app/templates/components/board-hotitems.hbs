@@ -1,0 +1,9 @@
+<section id="board-hot">
+{{#each ht in hot_topics}}
+	<div class="hot-item">
+		<div>HOT</div>
+		{{#link-to 'article' ht.secstr ht.board ht.hid (query-params type="thread")}}{{ht.title}}{{/link-to}}
+		<span class="hot-data">{{bmy-time ht.tid}}</span>
+	</div>
+{{/each}}
+</section>

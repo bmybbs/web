@@ -24,5 +24,12 @@
 
 	<div class="clear"></div>
 </header>
+{{#if hasHotItems}}
+{{board-hotitems hot_topics=header.hot_topic}}
+{{/if}}
 
 {{article-list articles=articlelist}}
+
+{{#if hasBoardTop}}
+{{article-list articles=boardtop}}
+{{/if}}

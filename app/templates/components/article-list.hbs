@@ -2,7 +2,7 @@
 	{{#each article in articles}}
 	<tr>
 		<td>{{article.num}}</td>
-		<td>{{#link-to 'article' article.section_id article.board article.aid}}{{article.title}}{{/link-to}}</td>
+		<td>{{#link-to 'article' article.secstr article.board article.aid}}{{article.title}}{{/link-to}}</td>
 		<td><span class="glyphicon glyphicon-user user-icon"></span>{{article.author}}</td>
 		<td>{{bmy-time article.aid}}</td>
 	</tr>

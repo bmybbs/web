@@ -13,6 +13,7 @@ export default Ember.Route.extend({
 	model: function(params) {
 		var board_req = new BMYAPIBoardRequest({ "name": params.board_id });
 		var al = new BMYAPIArticleListRequest({ "type": "board", "board": params.board_id, "btype":"0"});
+		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": params.board_id });
 
 		return Ember.RSVP.hash({
 			header: board_req.pull().then(function(data){
@@ -20,18 +21,28 @@ export default Ember.Route.extend({
 			}),
 			articlelist: al.pull().then(function(data) {
 				for(var i=0; i<data.articlelist.length; ++i)
-					data.articlelist[i].section_id = params.section_id;
+					data.articlelist[i].secstr = params.section_id;
 
 				return data.articlelist;
+			}),
+			boardtop: bt.pull().then(function(data) {
+				if(data.errcode === 0)
+					return data.articlelist;
+				else
+					return null;
 			})
 		});
 	},
 	setupController: function(controller, model) {
 		this._super(controller, model);
 
-		console.log(model.header.secstr);
 		controller.set('secname', get_bmysec_name(model.header.secstr));
-		console.log(model.header.bm[4]);
 		controller.set('hasSmallBM', model.header.bm[4]);
+
+		controller.set('hasHotItems', (model.header.hot_topic.length>0));
+
+		if(model.boardtop) {
+			controller.set('hasBoardTop', true);
+		}
 	}
 });
