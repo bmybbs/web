@@ -8,5 +8,5 @@ export default Ember.Handlebars.makeBoundHelper(function(value, option){
 		out += "&nbsp;<a href='#'>" + value[i] + "</a>";
 	}
 
-	return new Handlebars.SafeString(out);
+	return new Ember.Handlebars.SafeString(out);
 });
