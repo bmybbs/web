@@ -1,19 +1,23 @@
-{{#each articles}}
+{{#each ar in articles}}
 	<div class='dashboard-item'>
 		<div class='dashboard-item-title float-left'>
-			{{#if hot}}
+			{{#if ar.hot}}
 				<span class='bmy-span-icon bmy-bg-color-red1'></span>
 			{{else}}
 				<span class='bmy-span-icon bmy-bg-color-gray1'></span>
 			{{/if}}
-			<span>{{bmy-article-link this}}</span>
+			{{#if ar.type}}
+				<span>{{#link-to 'article' ar.secstr ar.board ar.tid (query-params type="thread")}}{{ar.title}}{{/link-to}}</span>
+			{{else}}
+				<span>{{#link-to 'article' ar.secstr ar.board ar.aid}}{{ar.title}}{{/link-to}}</span>
+			{{/if}}
 		</div>
 		<div class="float-right">
-			<span class='dashboard-item-author'><a href="#">{{author}}</a>@{{bmy-board-link this}}</span>
-			{{#if type}}
-				{{bmy-time tid}}
+			<span class='dashboard-item-author'><a href="#">{{ar.author}}</a>@{{#link-to 'board' ar.secstr ar.board}}{{ar.board}}{{/link-to}}</span>
+			{{#if ar.type}}
+				{{bmy-time ar.tid}}
 			{{else}}
-				{{bmy-time aid}}
+				{{bmy-time ar.aid}}
 			{{/if}}
 		</div>
 		<div class="clear"></div>

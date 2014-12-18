@@ -1,5 +1,5 @@
-{{#each articles}}
+{{#each ar in articles}}
 	<div class="dashboard-item">
-		<span>{{bmy-article-link this}}</span>
+		<span>{{#link-to 'article' ar.secstr ar.board ar.aid}}{{ar.title}}{{/link-to}}</span>
 	</div>
 {{/each}}
