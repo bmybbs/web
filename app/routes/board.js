@@ -10,9 +10,17 @@ function get_bmysec_name(sec_id) {
 }
 
 export default Ember.Route.extend({
+	queryParams: {
+		page: { refreshModel: true },
+		readtype: { refreshModel: true }
+	},
 	model: function(params) {
 		var board_req = new BMYAPIBoardRequest({ "name": params.board_id });
-		var al = new BMYAPIArticleListRequest({ "type": "board", "board": params.board_id, "btype":"0"});
+		var al = new BMYAPIArticleListRequest({
+			"type": "board",
+			"board": params.board_id,
+			"btype": (typeof(params.readtype) !== "undefined" && params.readtype === "thread") ? "t" : "0"
+		});
 		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": params.board_id });
 
 		return Ember.RSVP.hash({
