@@ -20,7 +20,7 @@ export default Ember.Route.extend({
 			"type": "board",
 			"board": params.board_id,
 			"btype": (typeof(params.readtype) !== "undefined" && params.readtype === "thread") ? "t" : "0",
-			"page": (typeof(params.page) !== "undefined") ? params.page : 1
+			"page": (typeof(params.page) !== "undefined" && params.page !== null) ? params.page : 1
 		});
 		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": params.board_id });
 
