@@ -24,6 +24,45 @@
 
 	<div class="clear"></div>
 </header>
+
+<div class="bmy-toolbar">
+	<div id="board-publish" class="dropdown">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
+		<ul class="dropdown-menu" role="menu">
+			<li>{{#link-to 'article-new' header.secstr header.name}}发表文章{{/link-to}}</li>
+			<li><a href="#">模板发文</a></li>
+		</ul>
+	</div>
+
+	<div id="board-list-mode" class="btn-group">
+		{{#if readType}}
+		<button {{action 'normalMode'}} type="button" class="btn btn-default">一般模式</button>
+		<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
+		{{else}}
+		<button type="button" class="btn btn-default" disabled="disabled">一般模式</button>
+		<button {{action 'threadMode'}} type="button" class="btn btn-default">主题模式</button>
+		{{/if}}
+	</div>
+
+	<div id="top-list-mode" class="btn-group">
+		<button type="button" class="btn btn-default">置顶</button>
+		<button type="button" class="btn btn-default" disabled="disabled">置底</button>
+	</div>
+
+	<div id="board-paging" class="float-right">
+		<span>
+			<span {{action 'prev_page'}}>上一页</span>
+			&nbsp;/&nbsp;
+			<span {{action 'next_page'}}>下一页</span>
+		</span>
+		<form class="form-inline" role="form">
+			<div class="form-group">{{input value=pageInput type="text" class="form-control"}}</div>
+			<span class="btn btn-default" {{action 'jump_page'}}>&gt;</span>
+		</form>
+		<span>{{page}} / {{pages}}</span>
+	</div>
+</div>
+
 {{#if hasHotItems}}
 {{board-hotitems hot_topics=header.hot_topic}}
 {{/if}}

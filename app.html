@@ -22,24 +22,6 @@
 	<script type="text/x-handlebars" data-template-name="article">
 	</script>
 
-	<script type="text/x-handlebars" data-template-name="board">
-		{{#if is_loaded_board}}
-			{{board-header board=board}}
-			{{#if hasHotItems}}
-				{{board-hotitems hot_topics=board.hot_topic}}
-			{{/if}}
-			{{board-toolbar data=this}}
-		{{/if}}
-
-		{{#if is_loaded_articlelist}}
-			{{article-list articles=articles}}
-		{{/if}}
-
-		{{#if is_loaded_boardtop}}
-			{{article-list articles=boardtop}}
-		{{/if}}
-	</script>
-
 	<script type="text/x-handlebars" data-template-name="articleRead">
 		{{#if is_loaded_board}}
 			{{board-header board=board}}
@@ -142,55 +124,6 @@
 			</tr>
 			{{/each}}
 		</table>
-	</script>
-
-	<script type="text/x-handlebars" id="components/board-hotitems">
-		<section id="board-hot">
-		{{#each hot_topics}}
-			<div class="hot-item">
-				<div>HOT</div>
-				<a href="#">{{title}}</a>
-				<span class="hot-data">{{BMYTime tid}}</span>
-			</div>
-		{{/each}}
-		</section>
-	</script>
-
-	<script type="text/x-handlebars" id="components/board-toolbar">
-		{{log 'all: ' this}}
-		<div class="bmy-toolbar">
-			<div id="board-publish" class="dropdown">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
-				<ul class="dropdown-menu" role="menu">
-					<li>{{BMYBoardNewLink data.board}}</li>
-					<li><a href="#">模板发文</a></li>
-				</ul>
-			</div>
-
-			<div id="board-list-mode" class="btn-group">
-				{{#if data.thread_mode}}
-				<button {{action 'normalMode'}} type="button" class="btn btn-default">一般模式</button>
-				<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
-				{{else}}
-				<button type="button" class="btn btn-default" disabled="disabled">一般模式</button>
-				<button {{action 'threadMode'}} type="button" class="btn btn-default">主题模式</button>
-				{{/if}}
-			</div>
-
-			<div id="top-list-mode" class="btn-group">
-				<button type="button" class="btn btn-default">置顶</button>
-				<button type="button" class="btn btn-default" disabled="disabled">置底</button>
-			</div>
-
-			<div id="board-paging" class="float-right">
-				<span>{{BMYBoardPageLink data.board}}</span>
-				<form class="form-inline" role="form">
-					<div class="form-group"><input type="text" class="form-control"></div>
-					<span class="btn btn-default">&gt;</span>
-				</form>
-				<span>{{data.board.paging.page}} / {{data.board.paging.pages}}</span>
-			</div>
-		</div>
 	</script>
 
 	<script type="text/x-handlebars" id="components/article-toolbar">

@@ -5,51 +5,6 @@ App.ApplicationController = Ember.Controller.extend({
 });
 
 // routers
-App.BoardPageRoute = Ember.Route.extend({
-	model: function(params) {
-		return params;
-	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-
-		if(typeof(localStorage.boardtoptype) == "undefined")
-			localStorage.boardtoptype = true;	// 置顶模式
-
-
-		localStorage.thread_mode = false;		// 用于在其他 templates 中传递值
-		controller.set('thread_mode', false);
-
-		var b = new BMYAPIBoardRequest({ "name": model.board_name });
-		b.pull().then(function(data) {
-			controller.set('hasHotItems', (data.hot_topic.length>0));
-
-			var pages = Math.ceil(data.article_num / 20);
-			var page  = model.page_num;
-			data.paging = {"page": page, "pages": pages};
-			controller.set('board', data);
-			controller.set('is_loaded_board', true);
-		});
-
-
-		var al = new BMYAPIArticleListRequest({ "type": "board", "board":model.board_name, "btype":"0", "page":model.page_num});
-		al.pull().then(function(data) {
-			controller.set('articles', data.articlelist);
-			controller.set('is_loaded_articlelist', true);
-		});
-
-		var bt = new BMYAPIArticleListRequest({ "type": "boardtop", "board": model.board_name });
-		bt.pull().then(function(data) {
-			if(data.errcode == 0) {
-				controller.set('boardtop', data.articlelist);
-				controller.set('is_loaded_boardtop', true);
-			}
-		});
-	},
-	renderTemplate: function() {
-		this.render('board');
-	}
-});
-
 App.BoardThreadRoute = Ember.Route.extend({
 	model: function(params) {
 		return params;
@@ -179,14 +134,6 @@ App.ArticleReplyRoute = Ember.Route.extend({
 });
 
 // controllers
-App.BoardController = Ember.ObjectController.extend({
-	actions: {
-		threadMode: function() {
-			href.location += "/thread";
-		}
-	}
-});
-
 App.BoardThreadController = Ember.ObjectController.extend({
 	actions: {
 		normalMode: function() {
@@ -248,41 +195,6 @@ Ember.Handlebars.helper('BMYSecName', function(value, option) {
 	return $.grep(bmysecstrs, function(e) {
 		return e.id == value;
 	})[0].name;
-});
-
-Ember.Handlebars.helper('BMYBoardPageLink', function(value, option) {
-	var out = "";
-
-	// link_base example "<a href='#/section/0/sysop"
-	var link_base  = "<a href='#/section/" + value.secstr + "/" + value.name;
-	var page_first = link_base + "/page/1'>首页</a>";
-	var page_prev  = link_base + "/page/" + (parseInt(value.paging.page) - 1) + "'>上一页</a>";
-	var page_next  = link_base + "/page/" + (parseInt(value.paging.page) + 1) + "'>下一页</a>";
-	var page_last  = link_base + "'>末页</a>";
-
-	if(value.paging.pages == 1)					// 只有一页
-		out = "";
-	if(value.paging.page == value.paging.pages) { // 已经是末页
-		out = page_first + " / " + page_prev;
-		console.log("1");
-		console.log(out);
-	} else if(value.paging.page == 1) {				// 已经是首页
-		out = page_next + " / " + page_last;
-		console.log("2");
-		console.log(out);
-	} else {
-		out = page_first + " / " + page_prev + " / " + page_next + " / " + page_last;
-		console.log("3");
-		console.log(out);
-	}
-
-	return new Handlebars.SafeString(out);
-});
-
-Ember.Handlebars.helper('BMYBoardNewLink', function(value, option) {
-	var link = "<a href='#/section/" + value.secstr.toString() + "/" + value.name + "/new'>发表文章</a>";
-	console.log(link);
-	return new Handlebars.SafeString(link);
 });
 
 Ember.Handlebars.helper('BMYArticleContent', function(value, option) {

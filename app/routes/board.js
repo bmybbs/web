@@ -53,5 +53,7 @@ export default Ember.Route.extend({
 		if(model.boardtop) {
 			controller.set('hasBoardTop', true);
 		}
+
+		controller.set('pages', Math.ceil(model.header.article_num / 20));
 	}
 });
