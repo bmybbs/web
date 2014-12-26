@@ -44,30 +44,6 @@ App.BoardThreadRoute = Ember.Route.extend({
 	}
 });
 
-App.ArticleReadRoute = Ember.Route.extend({
-	model: function(params) {
-		return params;
-	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-
-		var b = new BMYAPIBoardRequest({ "name": model.board_name });
-		b.pull().then(function(data) {
-			controller.set('board', data);
-			controller.set('is_loaded_board', true);
-		});
-
-		var a = new BMYAPIArticleRequest({ "aid": model.aid, "board": model.board_name });
-		a.pull().then(function(data) {
-			if(data.errcode == 0) {
-				controller.set('article', data);
-				console.log(data);
-				controller.set('is_loaded_article', true);
-			}
-		});
-	}
-});
-
 App.ArticlePostRoute = Ember.Route.extend({
 	model: function(params) {
 		return params;
@@ -189,14 +165,4 @@ App.ArticleReplyController = Ember.ObjectController.extend({
 Ember.Handlebars.helper('BMYArticleReplyLink', function(value, option) {
 	var link = "<a class='btn btn-default' href='#" + location.href.split('#')[1] + "/reply'>回复本文</a>";
 	return new Ember.Handlebars.SafeString(link);
-});
-
-Ember.Handlebars.helper('BMYSecName', function(value, option) {
-	return $.grep(bmysecstrs, function(e) {
-		return e.id == value;
-	})[0].name;
-});
-
-Ember.Handlebars.helper('BMYArticleContent', function(value, option) {
-	return new Handlebars.SafeString(value);
 });

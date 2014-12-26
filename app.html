@@ -19,20 +19,6 @@
 	</div>
 
 	<!-- templates -->
-	<script type="text/x-handlebars" data-template-name="article">
-	</script>
-
-	<script type="text/x-handlebars" data-template-name="articleRead">
-		{{#if is_loaded_board}}
-			{{board-header board=board}}
-		{{/if}}
-
-		{{#if is_loaded_article}}
-			{{article-toolbar article=article}}
-			{{article-content article=article}}
-		{{/if}}
-	</script>
-
 	<script type="text/x-handlebars" data-template-name="articlePost">
 		{{#if is_loaded_board}}
 			{{board-header board=board}}
@@ -128,43 +114,6 @@
 
 	<script type="text/x-handlebars" id="components/article-toolbar">
 
-	</script>
-
-	<script type="text/x-handlebars" id="components/article-content">
-		<section id="bmy-articles">
-		<div class='article-item'>
-			<div class='float-left article-author-info'>
-				<div class='article-author'><span class="glyphicon glyphicon-user user-icon"></span>{{article.author}}</div>
-				<div class='article-author-func'>
-					<a class='sendmail-btn' href="#">发送站内信</a>
-					<a class='addfriend-btn' href="#">加为好友</a>
-				</div>
-			</div>
-
-			<div class='float-right article-main'>
-				<div class='article-title'>
-					<div class='float-left'>{{article.title}}</div>
-					<div class='float-right btn-group'>
-						{{BMYArticleReplyLink}}
-						<button type='button' class='btn btn-default dropdown-toggle' data-toggle="dropdown">
-							<span class='caret'></span>
-							<span class='sr-only'>Toggle Dropdown</span>
-						</button>
-						<ul class='dropdown-menu' role='menu'>
-							<li><a href='#'>同主题由此展开</a></li>
-							<li class='divider'></li>
-							<li><a href='#'>同主题列表</a></li>
-							<li><a href='#'>同主题从主楼展开</a></li>
-						</ul>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class='article-body'>{{BMYArticleContent article.content}}</div>
-			</div>
-
-			<div class='clear'></div>
-		</div>
-		</section>
 	</script>
 
 	<script type="text/x-handlebars" id="components/article-edit">
