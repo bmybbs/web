@@ -44,7 +44,7 @@ module.exports = function(environment) {
     'font-src': "'self'",
     'connect-src': "'self' http://newtest.bmybbs.com:443 https://www.bmybbs.com",
     'img-src': "'self' data: http://newtest.bmybbs.com:443 https://www.bmybbs.com",
-    'style-src': "'self'",
+    'style-src': "'self' 'unsafe-inline'",
     'media-src': "'self'"
   };
 
