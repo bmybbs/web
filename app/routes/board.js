@@ -1,13 +1,7 @@
 import Ember from 'ember';
 import BMYAPIBoardRequest from 'bmy-new-web/utils/BMYAPIBoardRequest';
 import BMYAPIArticleListRequest from 'bmy-new-web/utils/BMYAPIArticleListRequest';
-import ENV from 'bmy-new-web/config/environment';
-
-function get_bmysec_name(sec_id) {
-	return Ember.$.grep(ENV.bmysecstrs, function(e) {
-		return e.id === sec_id;
-	})[0].name;
-}
+import get_bmysec_name from 'bmy-new-web/utils/BMYGetSecName';
 
 export default Ember.Route.extend({
 	queryParams: {
