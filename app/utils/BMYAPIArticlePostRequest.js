@@ -3,9 +3,9 @@ import ENV from 'bmy-new-web/config/environment';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
-		if(typeof(obj.type) === "undefined" || (obj.type==="NewPost")) {
+		if(typeof(obj.posttype) === "undefined" || (obj.posttype==="NewPost")) {
 			this.url = ENV.endpoint + 'api/article/post?board=' + obj.board + '&title=' + obj.title;
-		} else if(obj.type === "Reply") {
+		} else if(obj.posttype === "Reply") {
 			this.url = ENV.endpoint + 'api/article/reply?board=' + obj.board + '&title=' + obj.title + '&ref=' + obj.ref + '&rid=' + obj.rid + '&th=' + obj.thread;
 		}
 
