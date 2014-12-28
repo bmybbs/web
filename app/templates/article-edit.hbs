@@ -1,0 +1,28 @@
+<header id="bmy-board-header">
+	<div class="float-left">
+		<div class="board-header-title">
+			<span id="board-title-zh">{{#link-to 'board' header.secstr header.name}}{{header.zh_name}}{{/link-to}}</span>
+			<span id="board-title-en">{{#link-to 'board' header.secstr header.name}}{{header.name}}{{/link-to}}&nbsp;/&nbsp;{{#link-to 'section' header.secstr}}{{secname}}{{/link-to}}</span>
+		</div>
+
+		<div>
+			<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
+		</div>
+	</div>
+
+	<div class="float-right">
+		<div>
+			<span class="board-header-status-item">今日新帖<span class="badge">{{header.today_new}}</span></span>
+			<span class="board-header-status-item">在线<span class="badge">{{header.inboard_num}}</span></span>
+			<span class="board-header-status-item">人气值<span class="badge">{{header.score}}</span></span>
+		</div>
+		<div>版主&nbsp;/{{bmy-big-bm header.bm}}</div>
+		{{#if hasSmallBM}}
+		<div>小版主&nbsp;/{{bmy-small-bm header.bm}}</div>
+		{{/if}}
+	</div>
+
+	<div class="clear"></div>
+</header>
+
+{{article-edit-form article=article redirect="post_redirect"}}

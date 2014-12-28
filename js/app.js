@@ -44,36 +44,6 @@ App.BoardThreadRoute = Ember.Route.extend({
 	}
 });
 
-App.ArticlePostRoute = Ember.Route.extend({
-	model: function(params) {
-		return params;
-	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-
-		var b = new BMYAPIBoardRequest({ "name": model.board_name });
-		b.pull().then(function(data) {
-			controller.set('board', data);
-			controller.set('is_loaded_board', true);
-		});
-
-		var a = {
-			'board': model.board_name,
-			'title': '',
-			'rid': '',
-			'ref': '',
-			'type': 'NewPost',
-			'content': ''
-		};
-
-		controller.set('article', a);
-		controller.set('is_loaded_article', true);
-	}/*,
-	renderTemplate: function() {
-		this.render('articlePost');
-	}*/
-});
-
 App.ArticleReplyRoute = Ember.Route.extend({
 	model: function(params) {
 		return params;
@@ -115,28 +85,6 @@ App.BoardThreadController = Ember.ObjectController.extend({
 		normalMode: function() {
 			var current_url = href.location;
 			current_url.replace('/\/thread/', '');
-		}
-	}
-});
-
-App.ArticlePostController = Ember.ObjectController.extend({
-	actions: {
-		doneEditing: function() {
-			//console.log(this.get('article'));
-			var ap = new BMYAPIArticlePostRequest(this.get('article'));
-			var model = this.get('model');
-			ap.post().then(function(data) {
-				if(data.errcode == 0) {
-					console.log(data.aid);
-					var baseurl = location.href.split('#')[0];
-					location.href = baseurl + '#/section/' + model.sec_id + '/' + model.board_name + '/' + data.aid.toString();
-				}
-				else
-					console.log(data.errcode);
-			});
-		},
-		test: function() {
-			console.log('haha');
 		}
 	}
 });
