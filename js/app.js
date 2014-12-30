@@ -1,9 +1,5 @@
 App = Ember.Application.create();
 
-App.ApplicationController = Ember.Controller.extend({
-	searchcommand: ''
-});
-
 // routers
 App.BoardThreadRoute = Ember.Route.extend({
 	model: function(params) {
@@ -44,41 +40,6 @@ App.BoardThreadRoute = Ember.Route.extend({
 	}
 });
 
-App.ArticleReplyRoute = Ember.Route.extend({
-	model: function(params) {
-		return params;
-	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-
-		var b = new BMYAPIBoardRequest({ "name": model.board_name });
-		b.pull().then(function(data) {
-			controller.set('board', data);
-			controller.set('is_loaded_board', true);
-		});
-
-		var ra = new BMYAPIArticleRequest({ "aid": model.aid, "board": model.board_name, "type": "RAW" });
-		ra.pull().then(function(data) {
-			if(data.errcode == 0) {
-				var a = {
-					'board': model.board_name,
-					'title': (data.title.substr(0, 4) == 'Re: ') ? (data.title) : ('Re: '+data.title),
-					'ref': model.aid,
-					'rid': data.num,
-					'content': '\n【 在 ' + data.author + ' 的大作中提到: 】\n: '+ data.content.replace(/\n/g, '\n: '),
-					'thread': data.thread,
-					'type': 'Reply'
-				};
-				controller.set('article', a);
-				controller.set('is_loaded_article', true);
-			}
-		});
-	}/*,
-	renderTemplate: function() {
-		this.render('articlePost');
-	}*/
-});
-
 // controllers
 App.BoardThreadController = Ember.ObjectController.extend({
 	actions: {
@@ -87,30 +48,4 @@ App.BoardThreadController = Ember.ObjectController.extend({
 			current_url.replace('/\/thread/', '');
 		}
 	}
-});
-
-App.ArticleReplyController = Ember.ObjectController.extend({
-	actions: {
-		doneEditing: function() {
-			//console.log(this.get('article'));
-			var ap = new BMYAPIArticlePostRequest(this.get('article'));
-			var model = this.get('model');
-			ap.post().then(function(data) {
-				if(data.errcode == 0) {
-					console.log(data.aid);
-					var baseurl = location.href.split('#')[0];
-					location.href = baseurl + '#/section/' + model.sec_id + '/' + model.board_name + '/' + data.aid.toString();
-				}
-				else
-					console.log(data.errcode);
-			});
-		}
-	}
-});
-// helpers
-
-// todo 直接读取 url # 后面的部分，需要改进
-Ember.Handlebars.helper('BMYArticleReplyLink', function(value, option) {
-	var link = "<a class='btn btn-default' href='#" + location.href.split('#')[1] + "/reply'>回复本文</a>";
-	return new Ember.Handlebars.SafeString(link);
 });

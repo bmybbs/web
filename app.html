@@ -18,46 +18,6 @@
 		</div>
 	</div>
 
-	<!-- templates -->
-	<script type="text/x-handlebars" data-template-name="articleReply">
-		{{#if is_loaded_board}}
-		{{board-header board=board}}
-		{{/if}}
-
-		{{#if is_loaded_article}}
-		{{#with article}}
-		<div id="post-box">
-			<div id="post-form" class="float-left">
-				{{input id="article-title" type="text" value=title class="form-control input-lg" autofocus="" placeholder="标题"}}
-				{{textarea value=content class="form-control" id="article-content" rows="20" placeholder="想和小陶人们说点什么呢？"}}
-				<button {{action 'doneEditing'}} id="btn-post" class="btn btn-primary btn-lg">完成</button>
-				<p>
-					{{input type="hidden" id="post_ref" value=ref}}
-					{{input type="hidden" id="post_rid" value=rid}}
-					{{input type="hidden" id="post_board" value=board}}
-					{{input type="hidden" id="post_thread" value=thread}}
-					{{input type="hidden" id="post_type" value=type}}
-				</p>
-			</div>
-
-			<div id="post-tips" class="float-right alert alert-info">
-				<h4>编辑提示</h4>
-				<p>bla bla bla</p>
-				<ul>
-					<li>[ESC][0;31m红色[ESC][0m</li>
-					<li>[ESC][0;32m绿色[ESC][0m</li>
-				</ul>
-				<p>bla bla bla</p>
-				<p>bla bla bla</p>
-				<p>bla bla bla</p>
-			</div>
-
-			<div class="clear"></div>
-		</div>
-		{{/with}}
-		{{/if}}
-	</script>
-
 	<!-- components -->
 	<script type="text/x-handlebars" id="components/thread-list">
 		<table class="table table-striped table-condensed">
@@ -71,14 +31,6 @@
 			</tr>
 			{{/each}}
 		</table>
-	</script>
-
-	<script type="text/x-handlebars" id="components/article-toolbar">
-
-	</script>
-
-	<script type="text/x-handlebars" id="components/article-edit">
-
 	</script>
 
 	<script src="static/js/jquery-1.10.2.min.js"></script>
