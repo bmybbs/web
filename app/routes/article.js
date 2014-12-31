@@ -15,7 +15,8 @@ export default Ember.Route.extend({
 			article: article_req.pull().then(function(data) {
 				if(data.errcode === 0)
 					return data;
-			})
+			}),
+			params: params
 		});
 	},
 	setupController: function(controller, model) {
