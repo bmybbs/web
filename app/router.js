@@ -17,6 +17,10 @@ Router.map(function() {
 	this.route('article-new', { path: '/section/:section_id/:board_id/new' });
 
 	this.resource('favourite', { path: '/favourite' });
+
+	this.route('mails', { path: '/mail' }, function() {
+		this.route('mail', { path: '/:mail_id' });
+	});
 });
 
 export default Router;
