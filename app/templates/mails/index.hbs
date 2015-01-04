@@ -1,0 +1,23 @@
+<div>
+	<ul>
+		<li>总大小：{{max_size}} Bytes</li>
+		<li>已使用：{{current_size}} Bytes</li>
+	</ul>
+</div>
+
+<table class="table table-striped">
+<thead>
+	<th>#</th>
+	<th>Time</th>
+	<th>Author</th>
+	<th>Title</th>
+</thead>
+{{#each mail in model.maillist}}
+	<tr>
+		<td>{{mail.num}}</td>
+		<td>{{mail.mid}}</td>
+		<td>{{mail.author}}</td>
+		<td>{{mail.title}}</td>
+	</tr>
+{{/each}}
+</table>
