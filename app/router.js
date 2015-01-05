@@ -21,6 +21,8 @@ Router.map(function() {
 	this.route('mails', { path: '/mail' }, function() {
 		this.route('mail', { path: '/:mail_id' });
 	});
+
+	this.route('user', { path: '/user/:user_id'});
 });
 
 export default Router;
