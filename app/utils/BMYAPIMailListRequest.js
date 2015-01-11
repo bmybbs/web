@@ -13,6 +13,10 @@ export default BMYAPIRequest.extend({
 			this.url += "&count=" + obj.count;
 		}
 
+		if(typeof(obj.box_type) !== "undefined") {
+			this.url += "&box_type=" + obj.box_type;
+		}
+
 		if(typeof(obj.async) !== "undefined") {
 			this.async = obj.async;
 		}
