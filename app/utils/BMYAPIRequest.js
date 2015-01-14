@@ -3,10 +3,13 @@ import ENV from 'bmy-new-web/config/environment';
 
 /*global Class */
 
-export default Class.extend({
+var a = Class.extend({
 	async: true,
 	postData: "",
-	internal_url: "",
+	internal_url: ""
+});
+
+a.prototype = {
 	init: function(url) {
 		this.url = url;
 	},
@@ -49,4 +52,6 @@ export default Class.extend({
 			return data;
 		});
 	}
-});
+};
+
+export default a;
