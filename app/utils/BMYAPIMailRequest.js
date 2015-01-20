@@ -8,6 +8,6 @@ export default BMYAPIRequest.extend({
 		else
 			this.url = ENV.endpoint + 'api/mail/getHTMLContent';
 
-		this.url += '&num=' + obj.num;
+		this.url += '?num=' + obj.num;
 	}
 });
