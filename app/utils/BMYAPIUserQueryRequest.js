@@ -1,6 +1,5 @@
 import BMYAPIRequest from './BMYAPIRequest';
 import ENV from 'bmy-new-web/config/environment';
-import Ember from 'ember';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
