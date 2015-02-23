@@ -24,13 +24,6 @@
 						{{/each}}
 					</ul>
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">帮助 <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">BBS 使用帮助</a></li>
-						<li><a href="#">写信给站长</a></li>
-					</ul>
-				</li>
 			</ul>
 			<form class="navbar-form navbar-left" role="form">
 				<div class="form-group dropdown" id="commandbar">
@@ -47,14 +40,10 @@
 					</ul>
 				</div>
 			</form>
-			<div id="bmy-ps-info" class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right">
 				{{#if is_login}}
-				<div class='btn-group'>
-					<button id='nav-user-btn' type='button' class='btn btn-success navbar-btn dropdown-toggle' data-toggle='dropdown'>
-						{{userid}}
-						<span class='badge'>{{total_notify}}</span>
-						<span class='caret'></span>
-					</button>
+				<li class="dropdown">
+					<a href="#" class='dropdown-toggle' data-toggle="dropdown" role="button">{{userid}}<span class='badge'>{{total_notify}}</span><span class='caret'></span></a>
 					<ul class='dropdown-menu' role='menu'>
 						<li>
 							<a href='#'>
@@ -78,14 +67,22 @@
 						</li>
 						<li class='divider'></li>
 						<li>
-							<span id='logout-button' {{action 'logout'}}><span class='glyphicon glyphicon-off bmy-span-icon'></span>注销</span>
+							<span id='logout-button' {{action 'logout'}}><span class='glyphicon glyphicon-log-out bmy-span-icon'></span>注销</span>
 						</li>
 					</ul>
-				</div>
+				</li>
 				{{else}}
-				<span id='login-button' class='btn btn-success navbar-btn' {{action 'login'}}>登录</span>
+				<li>{{#link-to 'index'}}<span class='glyphicon glyphicon-log-in'></span>登录{{/link-to}}
+				</li>
 				{{/if}}
-			</div>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">帮助 <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">BBS 使用帮助</a></li>
+						<li><a href="#">写信给站长</a></li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
