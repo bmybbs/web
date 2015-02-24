@@ -6,7 +6,11 @@
 		</div>
 
 		<div>
-			<button id="btn-add-to-collection" class="btn btn-primary">加入收藏夹</button>
+			{{#if header.is_fav}}
+			<button id="btn-add-to-collection" class="btn btn-primary"><span class="glyphicon glyphicon-star"></span> 已收藏</button>
+			{{else}}
+			<button id="btn-add-to-collection" class="btn btn-primary"><span class="glyphicon glyphicon-star-empty"></span> 加入收藏</button>
+			{{/if}}
 		</div>
 	</div>
 
