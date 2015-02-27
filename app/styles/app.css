@@ -3,8 +3,18 @@ div.container { width: 960px; padding: 0px; }
 /* basic */
 .float-right { float: right; }
 .float-left  { float: left; }
+.float-center { margin-left: auto; margin-right: auto; }
 .clear       { clear: both; }
 .hidden      { display: none; }
+.bmy-box-shadow {
+	transition: border linear .2s, box-shadow linear .5s;
+	-moz-transition: border linear .2s, -moz-box-shadow linear .5s;
+	-webkit-transition: border linear .2s,-webkit-box-shadow linear .5s;
+	outline: none; border-color: rgba(8, 8, 8, .75);
+	box-shadow:0 0 8px rgba(8, 8, 8, .5);
+	-moz-box-shadow:0 0 8px rgba(8, 8, 8, .5);
+	-webkit-box-shadow:0 0 8px rgba(8, 8, 8, 3);
+}
 
 .bmy-bg-color-blue1	{ background: #3485D8; }
 .bmy-bg-color-blue2	{ background: #2650CA; }
@@ -24,11 +34,13 @@ div.container { width: 960px; padding: 0px; }
 .bmy-toolbar		{ margin: 20px 0px; padding: 16px 0; border-top: #dadde3 1px solid; border-bottom: #dadde3 1px solid; }
 
 /* login */
-.form-signin { max-width: 330px; margin-top: 80px; }
+.form-signin { max-width: 770px; padding-top: 30px; padding-bottom: 30px; background-color: #E6E6E6; }
 .form-signin h2 { margin-bottom: 60px; }
 .form-signin input { margin-top: 20px; }
 .form-signin button { margin-top: 20px; }
-.form-signin #bmy-links { margin-top: 10px; }
+.form-signin #bmy-links { margin-top: 10px; margin-left: 165px; }
+#login-form { margin-left: 150px; }
+#direct-login { margin-left: 165px; }
 .bmy-link-line { line-height: 24px; }
 .bmy-link-line a, .bmy-link-line span { display: inline-block; min-width: 160px; font-size: 16px; color: #428bca;}
 .bmy-link-line a:first { margin-right: 10px; }
@@ -41,10 +53,10 @@ div.container { width: 960px; padding: 0px; }
 #img-container a { float:left; position:absolute; }
 #img-container a img { border:none; }
 #img-container a.show { z-index:500; }
-div#img-nav { margin:30px auto 0;}
+div#img-nav { margin:-30px auto 0;}
 div#img-nav a {margin-left: 5px; height: 10px; width: 10px; float: left; border: 1px solid #FF6600; color: #B8C4CF; font-size:0px}
 .nav-active { background-color: #FF6600; color: #FFF; }
-#img-wrapper { max-width: 770px; margin-top: 80px;}
+#img-wrapper { max-width: 770px; margin-top: 30px;}
 
 /* navbar style */
 a.navbar-brand { padding: 10px;}

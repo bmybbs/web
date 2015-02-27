@@ -4,9 +4,6 @@ import ENV from 'bmy-new-web/config/environment';
 export default Ember.ObjectController.extend({
 	'is_login': true,
 	actions: {
-		redirect: function() {
-			this.transitionToRoute('dashboard');
-		},
 		login: function() {
 			var $ = Ember.$;
 			var userid   = $('input#username').val();
