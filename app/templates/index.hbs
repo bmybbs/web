@@ -6,7 +6,7 @@
 <div class="form-signin float-center">
 	{{#if is_login}}
 	<div id="direct-login">
-		<h3>您已登录系统，请直接{{#link-to 'dashboard'}}进入{{/link-to}}</h3>
+		<h3>您已登录系统，请直接<span {{action 'redirect'}}>进入</span></h3>
 	</div>
 	{{else}}
 	<div id="login-form" class="form-inline float-center">

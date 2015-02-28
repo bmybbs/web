@@ -41,6 +41,7 @@ div.container { width: 960px; padding: 0px; }
 .form-signin #bmy-links { margin-top: 10px; margin-left: 165px; }
 #login-form { margin-left: 150px; }
 #direct-login { margin-left: 165px; }
+#direct-login span { color: #428bca; cursor: pointer; }
 .bmy-link-line { line-height: 24px; }
 .bmy-link-line a, .bmy-link-line span { display: inline-block; min-width: 160px; font-size: 16px; color: #428bca;}
 .bmy-link-line a:first { margin-right: 10px; }
