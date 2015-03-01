@@ -30,6 +30,7 @@ export default Ember.ObjectController.extend({
 						localStorage.token  = data.token;
 						localStorage.is_rmbme = is_rmbme;
 						localStorage.is_login = true;
+						$('div#bmy-navbar').removeClass('hidden');
 						c.controllerFor('application').set('is_login', true);
 						c.controllerFor('application').set('userid', data.userid);
 						c.transitionToRoute('dashboard');
