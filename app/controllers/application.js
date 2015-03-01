@@ -1,7 +1,59 @@
 import Ember from 'ember';
 import ENV from 'bmy-new-web/config/environment';
+import BMYAPIUserAutocompleteRequest from '../utils/BMYAPIUserAutocompleteRequest';
+import BMYAPIBoardAutocompleteRequest from '../utils/BMYAPIBoardAutocompleteRequest';
 
 var $ = Ember.$;
+var lazySearchTimer = 0;
+var MAX_DISPLAY_COUNT = 3;
+var doLasySearch = function(search_string) {
+	if(lazySearchTimer) {
+		clearTimeout(lazySearchTimer);
+	}
+
+	lazySearchTimer = setTimeout(function() {
+		var uac_req = new BMYAPIUserAutocompleteRequest({ 'search_str': search_string });
+		var bac_req = new BMYAPIBoardAutocompleteRequest({ 'search_str': search_string });
+
+		uac_req.pull().then(function(data) {
+			$('li.uac').remove();
+
+			if(data.errcode===0 && typeof(data.user_array)!=="undefined") {
+				var i = 0,
+					html_str = "",
+					total_num = data.user_array.length;
+				for(; i<MAX_DISPLAY_COUNT && i<total_num; ++i) {
+					html_str += "<li class='uac' id='uac_'" + i + "><a href='#'>" + data.user_array[i] + "</a></li>";
+				}
+
+				$('li#search_result_user').after(html_str);
+
+				if(total_num > MAX_DISPLAY_COUNT) {
+					$('li#uac_2').after("<li class='uac' id='uac_more'><a href='#'>搜索更多关于 " + search_string + " 的用户</a></li>");
+				}
+			}
+		});
+
+		bac_req.pull().then(function(data) {
+			$('li.bac').remove();
+
+			if(data.errcode===0 && typeof(data.board_array)!=="undefined") {
+				var i = 0,
+					html_str = "",
+					total_num = data.board_array.length;
+				for(; i<MAX_DISPLAY_COUNT && i<total_num; ++i) {
+					html_str += "<li class='bac' id='bac_'" + i + "><a href='#'>" + data.board_array[i] + "</a></li>";
+				}
+
+				$('li#search_result_board').after(html_str);
+
+				if(total_num > MAX_DISPLAY_COUNT) {
+					$('li#uac_2').after("<li class='bac' id='bac_more'><a href='#'>搜索更多关于 " + search_string + " 的版面</a></li>");
+				}
+			}
+		});
+	}, 200);
+};
 
 Ember.TextField.reopen({
 	keyUp: function(event) {
@@ -20,9 +72,11 @@ export default Ember.ObjectController.extend({
 			$('#commandbar').removeClass('open');
 		},
 		commandbarKeyUp: function() {
-			if($('#commandbar input').val().length > 0)
+			if($('#commandbar input').val().length > 0) {
 				$('#commandbar').addClass('open');
-			else
+
+				doLasySearch($('#commandbar input').val());
+			} else
 				$('#commandbar').removeClass('open');
 		},
 		logout: function() {
