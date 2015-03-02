@@ -13,11 +13,11 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li>{{#link-to 'dashboard'}}导读{{/link-to}}</li>
-				<li><a href="#">热门</a></li>
-				<li>{{#link-to 'favourite'}}收藏{{/link-to}}</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">分区 <b class="caret"></b></a>
+				<li data-toggle="tooltip" data-placement="bottom" title="导读">{{#link-to 'dashboard'}}<span class="glyphicon glyphicon-home"></span>{{/link-to}}</li>
+				<li data-toggle="tooltip" data-placement="bottom" title="热门"><a href="#"><span class="glyphicon glyphicon-fire"></span></a></li>
+				<li data-toggle="tooltip" data-placement="bottom" title="收藏">{{#link-to 'favourite'}}<span class="glyphicon glyphicon-heart"></span>{{/link-to}}</li>
+				<li data-toggle="tooltip" data-placement="bottom" title="分区" class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> <b class="caret"></b></a>
 					<ul class="dropdown-menu" id="nav-section-dropdown">
 						{{#each s in sections}}
 						<li>{{#link-to 'section' s.id}}{{s.id}}区&nbsp;{{s.name}}{{/link-to}}</li>
@@ -75,8 +75,8 @@
 				<li>{{#link-to 'index'}}<span class='glyphicon glyphicon-log-in'></span>登录{{/link-to}}
 				</li>
 				{{/if}}
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">帮助 <b class="caret"></b></a>
+				<li data-toggle="tooltip" data-placement="bottom" title="帮助" class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-question-sign'></span> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">BBS 使用帮助</a></li>
 						<li><a href="#">写信给站长</a></li>
