@@ -14,6 +14,7 @@ var doLasySearch = function(search_string) {
 	lazySearchTimer = setTimeout(function() {
 		var uac_req = new BMYAPIUserAutocompleteRequest({ 'search_str': search_string });
 		var bac_req = new BMYAPIBoardAutocompleteRequest({ 'search_str': search_string });
+		var re = new RegExp( '(' + search_string + ')', "gi");
 
 		uac_req.pull().then(function(data) {
 			$('li.uac').remove();
@@ -23,7 +24,7 @@ var doLasySearch = function(search_string) {
 					html_str = "",
 					total_num = data.user_array.length;
 				for(; i<MAX_DISPLAY_COUNT && i<total_num; ++i) {
-					html_str += "<li class='uac' id='uac_'" + i + "><a href='#'>" + data.user_array[i] + "</a></li>";
+					html_str += "<li class='uac' id='uac_'" + i + "><a href='#'>" + data.user_array[i].replace(re, "<strong>$1</strong>") + "</a></li>";
 				}
 
 				$('li#search_result_user').after(html_str);
@@ -42,7 +43,7 @@ var doLasySearch = function(search_string) {
 					html_str = "",
 					total_num = data.board_array.length;
 				for(; i<MAX_DISPLAY_COUNT && i<total_num; ++i) {
-					html_str += "<li class='bac' id='bac_'" + i + "><a href='#'>" + data.board_array[i] + "</a></li>";
+					html_str += "<li class='bac' id='bac_'" + i + "><a href='#'>" + data.board_array[i].replace(re, "<strong>$1</strong>") + "</a></li>";
 				}
 
 				$('li#search_result_board').after(html_str);
