@@ -43,40 +43,36 @@
 			<ul class="nav navbar-nav navbar-right">
 				{{#if is_login}}
 				<li class="dropdown">
-					<a href="#" class='dropdown-toggle' data-toggle="dropdown" role="button">{{userid}}<span class='badge'>{{total_notify}}</span><span class='caret'></span></a>
+					<a href="#" class='dropdown-toggle' data-toggle="dropdown" role="button">{{userid}}&nbsp;<span class='badge'>{{total_notify}}</span>&nbsp;<span class='caret'></span></a>
 					<ul class='dropdown-menu' role='menu'>
 						<li>
 							<a href='#'>
-								<span class='glyphicon glyphicon-envelope bmy-span-icon'></span>
-								站内信
-								<span class='badge pull-right'>{{unread_mail}}</span>
+								<span class='glyphicon glyphicon-envelope bmy-span-icon'></span>&nbsp;站内信<span class='badge pull-right'>{{unread_mail}}</span>
 							</a>
 						</li>
 						<li>
 							<a href='#'>
-								<span class='glyphicon glyphicon-bullhorn bmy-span-icon'></span>
-								提醒
-								<span class='badge pull-right'>{{unread_notify}}</span>
+								<span class='glyphicon glyphicon-bullhorn bmy-span-icon'></span>&nbsp;提醒<span class='badge pull-right'>{{unread_notify}}</span>
 							</a>
 						</li>
 						<li class='divider'></li>
 						<li>
 							<a href='#'>
-								<span class='glyphicon glyphicon-cog bmy-span-icon'></span>工具箱
+								<span class='glyphicon glyphicon-cog bmy-span-icon'></span>&nbsp;工具箱
 							</a>
 						</li>
 						<li class='divider'></li>
 						<li>
-							<span id='logout-button' {{action 'logout'}}><span class='glyphicon glyphicon-log-out bmy-span-icon'></span>注销</span>
+							<span id='logout-button' {{action 'logout'}}><span class='glyphicon glyphicon-log-out bmy-span-icon'></span>&nbsp;注销</span>
 						</li>
 					</ul>
 				</li>
 				{{else}}
-				<li>{{#link-to 'index'}}<span class='glyphicon glyphicon-log-in'></span>登录{{/link-to}}
+				<li>{{#link-to 'index'}}<span class='glyphicon glyphicon-log-in'></span>&nbsp;登录{{/link-to}}
 				</li>
 				{{/if}}
 				<li data-toggle="tooltip" data-placement="bottom" title="帮助" class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-question-sign'></span> <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-question-sign'></span>&nbsp;<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">BBS 使用帮助</a></li>
 						<li><a href="#">写信给站长</a></li>
