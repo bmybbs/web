@@ -23,6 +23,12 @@ Router.map(function() {
 	});
 
 	this.route('user', { path: '/user/:user_id'});
+
+	this.route('settings', { path: '/settings' }, function() {
+		this.route('friends');
+		this.route('rejects');
+		this.route('favourite');
+	});
 });
 
 export default Router;
