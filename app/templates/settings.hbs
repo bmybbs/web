@@ -2,17 +2,19 @@
 	<div class="col-md-2">
 		<table class="table">
 			<thead>
-				<tr><td>配置项</td></tr>
+				<tr><th>配置项</th></tr>
 			</thead>
-			<tr>
-				<td>{{#link-to 'settings.friends'}}好友管理{{/link-to}}</td>
-			</tr>
-			<tr>
-				<td>{{#link-to 'settings.rejects'}}黑名单管理{{/link-to}}</td>
-			</tr>
-			<tr>
-				<td>{{#link-to 'settings.favourite'}}收藏夹管理{{/link-to}}</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td>{{#link-to 'settings.friends'}}<span class="glyphicon glyphicon-user"></span>&nbsp;好友管理{{/link-to}}</td>
+				</tr>
+				<tr>
+					<td>{{#link-to 'settings.rejects'}}<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;黑名单管理{{/link-to}}</td>
+				</tr>
+				<tr>
+					<td>{{#link-to 'settings.favourite'}}<span class="glyphicon glyphicon-heart"></span>&nbsp;收藏夹管理{{/link-to}}</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 	<div class="col-md-10">{{outlet}}</div>
