@@ -180,3 +180,9 @@ section#bmy-article { padding-top: 20px; }
 
 /* user */
 .user-icon { margin-right: 5px; }
+
+/* settings */
+#friend-mng-list #friend-mng-table-avatar { width: 54px; }
+#friend-mng-list #friend-mng-table-userid { width: 150px; }
+#friend-mng-list #friend-mng-table-delete { width: 54px; }
+#friend-mng-list .friend-mng-bg { font-size: 18px; line-height: 36px; }
