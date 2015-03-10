@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>兵马俑 BBS</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>兵马俑 BBS</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for 'head'}}
+		{{content-for 'head'}}
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/bmy-new-web.css">
-  </head>
-  <body>
-    {{content-for 'body'}}
+		<link rel="stylesheet" href="assets/vendor.css">
+		<link rel="stylesheet" href="assets/bmy-new-web.css">
+		{{content-for 'head-footer'}}
+	</head>
+	<body>
+		{{content-for 'body'}}
 
-    <script src="assets/vendor.js"></script>
-    <script src="assets/bmy-new-web.js"></script>
-  </body>
+		<script src="assets/vendor.js"></script>
+		<script src="assets/bmy-new-web.js"></script>
+		{{content-for 'body-footer'}}
+	</body>
 </html>
