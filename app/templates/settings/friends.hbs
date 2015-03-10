@@ -7,9 +7,9 @@
 			</div>
 
 			<form id="friend-mng-add">
-				<div class="form-group"><input type="text" class="form-control" id="friendId" placeholder="用户 ID"></div>
-				<div class="form-group"><input type="text" class="form-control" id="friendExp" placeholder="用户说明"></div>
-				<button class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;添加</button>
+				<div class="form-group">{{input type="text" class="form-control" id="friendId" placeholder="用户 ID" value=friendId}}</div>
+				<div class="form-group">{{input type="text" class="form-control" id="friendExp" placeholder="用户说明" value=friendExp}}</div>
+				<button class="btn btn-primary" {{action 'addFriend'}}><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;添加</button>
 			</form>
 		</div>
 
@@ -30,11 +30,11 @@
 				</thead>
 				{{#each user in users}}
 				<tbody>
-					<tr>
+					<tr {{bind-attr id=user.userid}}>
 						<td>{{bmy-user-avatar user.userid 'xxs'}}</td>
 						<td class="friend-mng-bg">{{user.userid}}</td>
 						<td>{{user.explain}}</td>
-						<td class="friend-mng-bg"><span class="glyphicon glyphicon-minus-sign"></span></td>
+						<td class="friend-mng-bg" {{action 'delFriend' user.userid}}><span class="glyphicon glyphicon-minus-sign"></span></td>
 					</tr>
 				</tbody>
 				{{/each}}
