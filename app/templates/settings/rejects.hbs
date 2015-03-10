@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-3">
+			<div class="page-header">
+				<h2>添加黑名单</h2>
+			</div>
+
+			<form id="friend-mng-add">
+				<div class="form-group">{{input type="text" class="form-control" id="friendId" placeholder="用户 ID" value=friendId}}</div>
+				<div class="form-group">{{input type="text" class="form-control" id="friendExp" placeholder="用户说明" value=friendExp}}</div>
+				<button class="btn btn-primary" {{action 'addFriend'}}><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;添加</button>
+			</form>
+		</div>
+
+		<div class="col-md-7">
+			<div class="page-header">
+				<h2>黑名单列表</h2>
+			</div>
+
+			{{#if users.length}}
+			<table id="friend-mng-list" class="table">
+				<thead>
+					<tr>
+						<th id="friend-mng-table-avatar"></th>
+						<th id="friend-mng-table-userid">用户名</th>
+						<th id="friend-mng-table-explain">备注</th>
+						<th id="friend-mng-table-delete">操作</th>
+					</tr>
+				</thead>
+				{{#each user in users}}
+				<tbody>
+					<tr {{bind-attr id=user.userid}}>
+						<td>{{bmy-user-avatar user.userid 'xxs'}}</td>
+						<td class="friend-mng-bg">{{user.userid}}</td>
+						<td>{{user.explain}}</td>
+						<td class="friend-mng-bg" {{action 'delFriend' user.userid}}><span class="glyphicon glyphicon-minus-sign"></span></td>
+					</tr>
+				</tbody>
+				{{/each}}
+			</table>
+			{{else}}
+			<p class="bg-info">暂无黑名单</p>
+			{{/if}}
+		</div>
+	</div>
+</div>
