@@ -56,12 +56,6 @@ var doLasySearch = function(search_string) {
 	}, 200);
 };
 
-Ember.TextField.reopen({
-	keyUp: function(event) {
-		this.sendAction('key-up', this, event);
-	}
-});
-
 export default Ember.ObjectController.extend({
 	searchcommand: '',
 	actions: {
