@@ -15,7 +15,7 @@
 {{#each mail in model.maillist}}
 	<tr>
 		<td>{{mail.num}}</td>
-		<td>{{mail.mid}}</td>
+		<td>{{#link-to 'mails.mail' mail.mid}}{{mail.mid}}{{/link-to}}</td>
 		<td>{{mail.author}}</td>
 		<td>{{mail.title}}</td>
 	</tr>

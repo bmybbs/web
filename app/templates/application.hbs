@@ -46,9 +46,9 @@
 					<a href="#" class='dropdown-toggle' data-toggle="dropdown" role="button">{{userid}}&nbsp;<span class='badge'>{{total_notify}}</span>&nbsp;<span class='caret'></span></a>
 					<ul class='dropdown-menu' role='menu'>
 						<li>
-							<a href='#'>
+							{{#link-to 'mails'}}
 								<span class='glyphicon glyphicon-envelope bmy-span-icon'></span>&nbsp;站内信<span class='badge pull-right'>{{unread_mail}}</span>
-							</a>
+							{{/link-to}}
 						</li>
 						<li>
 							<a href='#'>
