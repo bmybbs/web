@@ -12,6 +12,9 @@ export default Ember.ObjectController.extend({
 			var ufa_req = new BMYAPIUserFriendsAddRequest({ queryid: this.get('friendId'), explain: this.get('friendExp') });
 			ufa_req.pull().then(function(data) {
 				if(data.errcode === 0) {
+					self.set('friendId', '');
+					self.set('friendExp', '');
+
 					var uflr = new BMYAPIUserFriendsListRequest({ });
 					uflr.pull().then(function(data) {
 						self.set('model', data);
