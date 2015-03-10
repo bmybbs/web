@@ -23,6 +23,7 @@ app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', { destDir: 'assets'});
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff', { destDir: 'fonts'});
+app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2', { destDir: 'fonts'});
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf', { destDir: 'fonts'});
 app.import('bower_components/moment/min/moment-with-locales.min.js');
 app.import('bower_components/bpopup/jquery.bpopup.min.js');
