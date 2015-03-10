@@ -21,4 +21,4 @@ export default Ember.Handlebars.makeBoundHelper(function(userid, size, option) {
 		return new Ember.Handlebars.SafeString("<img src='" + avatar_url + "mystery.png' alt='神秘用户'>");
 
 	return new Ember.Handlebars.SafeString("<img src='" + avatar_url + userid[0].toLowerCase() + ".png' alter='" + userid + "'" + ((img_size !== 0) ? ("height='" + img_size + "' width='" + img_size + "'") : "" ) +">");
-})
+});
