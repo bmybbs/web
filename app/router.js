@@ -29,6 +29,8 @@ Router.map(function() {
 		this.route('rejects');
 		this.route('favourite');
 	});
+
+	this.route('notifications');
 });
 
 export default Router;
