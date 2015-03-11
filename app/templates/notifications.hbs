@@ -1,0 +1,16 @@
+<div class="page-header">
+	<h2>我的提醒</h2>
+</div>
+
+{{#if notifications.length}}
+
+{{#each item in notifications}}
+<div class="notify-item" {{bind-attr id=_view.contentIndex}}>
+	<span class="glyphicon glyphicon-minus-sign" {{action 'delItem' item.board item.noti_time _view.contentIndex}}></span>网友 {{#link-to 'user' item.from_userid}}{{item.from_userid}}{{/link-to}} {{bmy-time-diff item.noti_time}}在 {{#link-to 'article' item.secstr item.board item.noti_time}}{{item.title}}{{/link-to}} 中{{#if item.type}}&nbsp;@&nbsp;{{else}}回复{{/if}}了您
+</div>
+{{/each}}
+<div class="notify-item" {{action 'delAll'}}><span class="glyphicon glyphicon-minus-sign"></span>忽略全部提醒</div>
+
+{{else}}
+<p>当前没有提醒，到{{#link-to 'favourite'}}预定讨论区{{/link-to}}多多灌水吧 :-)</p>
+{{/if}}

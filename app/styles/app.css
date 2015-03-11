@@ -186,3 +186,7 @@ section#bmy-article { padding-top: 20px; }
 #friend-mng-list #friend-mng-table-userid { width: 150px; }
 #friend-mng-list #friend-mng-table-delete { width: 54px; }
 #friend-mng-list .friend-mng-bg { font-size: 18px; line-height: 36px; }
+
+/* notification */
+div.notify-item { border-bottom: 1px #EFEFEF solid; padding: 12px 15px; }
+div.notify-item span { margin-right: 10px; }
