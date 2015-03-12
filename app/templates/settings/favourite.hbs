@@ -18,16 +18,17 @@
 			</div>
 
 			{{#if board_num}}
-			<table class="table">
+			<table id="fav-mng-list" class="table">
 				<thead>
 					<tr>
+						<th id="fav-mng-table-delete">操作</th>
 						<th>版面名</th>
-						<th>操作</th>
 					</tr>
 				</thead>
 				{{#each board in board_array}}
 				<tbody>
 					<tr {{bind-attr id=board.name}}>
+						<td {{action 'delBoard' board.name}}><span class="glyphicon glyphicon-minus-sign"></span></td>
 						<td>
 							{{#if board.accessible}}
 							{{#link-to 'board' board.secstr board.name}}{{board.name}}{{/link-to}}
@@ -35,7 +36,6 @@
 							{{board.name}}
 							{{/if}}
 						</td>
-						<td {{action 'delBoard' board.name}}><span class="glyphicon glyphicon-minus-sign"></span></td>
 					</tr>
 				</tbody>
 				{{/each}}
