@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import BMYAPIUserFriendsListRequest from '../../utils/BMYAPIUserFriendsListRequest';
 import BMYAPIUserFriendsAddRequest from '../../utils/BMYAPIUserFriendsAddRequest';
 import BMYAPIUserFriendsDelRequest from '../../utils/BMYAPIUserFriendsDelRequest';
 

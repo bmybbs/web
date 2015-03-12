@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import BMYAPIUserRejectsListRequest from '../../utils/BMYAPIUserRejectsListRequest';
 import BMYAPIUserRejectsAddRequest from '../../utils/BMYAPIUserRejectsAddRequest';
 import BMYAPIUserRejectsDelRequest from '../../utils/BMYAPIUserRejectsDelRequest';
 
