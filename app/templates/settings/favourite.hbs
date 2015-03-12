@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-3">
+			<div class="page-header">
+				<h2>添加版面</h2>
+			</div>
+
+			<form id="favourite-mng-add">
+				<div class="form-group">{{input type="text" class="form-control" id="boardName" placeholder="版面名" value=boardName}}</div>
+				<button class="btn btn-primary" {{action 'addBoard'}}><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;添加</button>
+			</form>
+		</div>
+
+		<div class="col-md-7">
+			<div class="page-header">
+				<h2>收藏夹列表</h2>
+			</div>
+
+			{{#if board_num}}
+			<table class="table">
+				<thead>
+					<tr>
+						<th>版面名</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				{{#each board in board_array}}
+				<tbody>
+					<tr {{bind-attr id=board.name}}>
+						<td>
+							{{#if board.accessible}}
+							{{#link-to 'board' board.secstr board.name}}{{board.name}}{{/link-to}}
+							{{else}}
+							{{board.name}}
+							{{/if}}
+						</td>
+						<td {{action 'delBoard' board.name}}><span class="glyphicon glyphicon-minus-sign"></span></td>
+					</tr>
+				</tbody>
+				{{/each}}
+			</table>
+			{{else}}
+			<p class="bg-info">收藏夹列表为空哦，可以在这里添加版面！</p>
+			{{/if}}
+		</div>
+	</div>
+</div>
