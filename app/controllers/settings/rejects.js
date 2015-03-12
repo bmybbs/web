@@ -12,13 +12,15 @@ export default Ember.ObjectController.extend({
 			var ufa_req = new BMYAPIUserRejectsAddRequest({ queryid: this.get('friendId'), explain: this.get('friendExp') });
 			ufa_req.pull().then(function(data) {
 				if(data.errcode === 0) {
+					var users = self.model.users;
+					if(typeof(users) === "undefined" || users.length === 0) {
+						self.set('users', [ { "userid":  self.get('friendId'), "explain": self.get('friendExp') } ]);
+					} else {
+						self.model.users.addObject({ "userid":  self.get('friendId'), "explain": self.get('friendExp') });
+					}
+
 					self.set('friendId', '');
 					self.set('friendExp', '');
-
-					var uflr = new BMYAPIUserRejectsListRequest({ });
-					uflr.pull().then(function(data) {
-						self.set('model', data);
-					});
 				} else if(data.errcode === 100000) {
 					alert('没有找到相关用户...您再瞅瞅？');
 				} else if(data.errcode === 100009) {
@@ -35,7 +37,14 @@ export default Ember.ObjectController.extend({
 			var ufd_req = new BMYAPIUserRejectsDelRequest({ queryid: userid });
 			ufd_req.pull().then(function(data) {
 				if(data.errcode === 0) {
-					Ember.$('tr#' + userid).remove();
+					var users = self.get('users');
+					var u_length = users.length;
+					for (var i=0; i<u_length; ++i) {
+						if (users[i].userid === userid) {
+							users.removeObject(users[i]);
+							return ;
+						}
+					}
 				} else if(data.errcode === 100000) {
 					alert('没有找到相关用户...您再瞅瞅？');
 				} else if(data.errcode === 100011) {
