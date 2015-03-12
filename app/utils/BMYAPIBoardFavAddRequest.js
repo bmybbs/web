@@ -3,7 +3,7 @@ import ENV from 'bmy-new-web/config/environment';
 
 export default BMYAPIRequest.extend({
 	init: function(obj) {
-		this.url = ENV.endpoint + 'api/board/fav/list?board=' + obj.board;
+		this.url = ENV.endpoint + 'api/board/fav/add?board=' + obj.board;
 
 		if(typeof(obj.async) !== "undefined")
 			this.async = obj.async;
