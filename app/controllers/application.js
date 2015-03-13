@@ -6,7 +6,7 @@ import BMYAPIBoardAutocompleteRequest from '../utils/BMYAPIBoardAutocompleteRequ
 var $ = Ember.$;
 var lazySearchTimer = 0;
 var MAX_DISPLAY_COUNT = 3;
-var doLasySearch = function(search_string) {
+var doLasySearch = function(search_string, controller) {
 	if(lazySearchTimer) {
 		clearTimeout(lazySearchTimer);
 	}
@@ -18,6 +18,7 @@ var doLasySearch = function(search_string) {
 
 		uac_req.pull().then(function(data) {
 			$('li.uac').remove();
+			controller.set('hasMoreUsers', false);
 
 			if(data.errcode===0 && typeof(data.user_array)!=="undefined") {
 				var i = 0,
@@ -30,13 +31,14 @@ var doLasySearch = function(search_string) {
 				$('li#search_result_user').after(html_str);
 
 				if(total_num > MAX_DISPLAY_COUNT) {
-					$('li#uac_2').after("<li class='uac' id='uac_more'><a href='#'>搜索更多关于 " + search_string + " 的用户</a></li>");
+					controller.set('hasMoreUsers', true);
 				}
 			}
 		});
 
 		bac_req.pull().then(function(data) {
 			$('li.bac').remove();
+			controller.set('hasMoreBoards', false);
 
 			if(data.errcode===0 && typeof(data.board_array)!=="undefined") {
 				var i = 0,
@@ -49,7 +51,7 @@ var doLasySearch = function(search_string) {
 				$('li#search_result_board').after(html_str);
 
 				if(total_num > MAX_DISPLAY_COUNT) {
-					$('li#uac_2').after("<li class='bac' id='bac_more'><a href='#'>搜索更多关于 " + search_string + " 的版面</a></li>");
+					controller.set('hasMoreBoards', true);
 				}
 			}
 		});
@@ -57,6 +59,8 @@ var doLasySearch = function(search_string) {
 };
 
 export default Ember.ObjectController.extend({
+	hasMoreUsers: false,
+	hasMoreBoards: false,
 	searchcommand: '',
 	actions: {
 		commandbarFocusInInput: function() {
@@ -70,7 +74,7 @@ export default Ember.ObjectController.extend({
 			if($('#commandbar input').val().length > 0) {
 				$('#commandbar').addClass('open');
 
-				doLasySearch($('#commandbar input').val());
+				doLasySearch($('#commandbar input').val(), this);
 			} else
 				$('#commandbar').removeClass('open');
 		},
