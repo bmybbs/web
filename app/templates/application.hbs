@@ -26,12 +26,12 @@
 				</li>
 			</ul>
 			<form class="navbar-form navbar-left" role="form">
-				<div class="form-group dropdown" id="commandbar">
-					{{input type="text" placeholder="搜索版面、用户、或者文章" class="form-control dropdown-toggle" data-toggle="dropdown" value=searchcommand focus-in="commandbarFocusInInput" focus-out="commandbarFocusOutInput" on="keyUp" key-up="commandbarKeyUp"}}
+				{{#view "commandbar" class="form-group dropdown" id="commandbar"}}
+					{{input type="text" placeholder="搜索版面、用户、或者文章" class="form-control dropdown-toggle" data-toggle="dropdown" value=searchcommand on="keyUp" key-up="commandbarKeyUp" id="inputSearch"}}
 					<div class="input-group-btn">
 						<span class="btn btn-default" disabled="disabled"><i class="glyphicon glyphicon-search"></i></span>
 					</div>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu" role="menu" aria-labelledby="inputSearch">
 						<li role="presentation" class="dropdown-header" id="search_result_board"><span class="label label-primary">搜索版面</span> {{searchcommand}}</li>
 						{{#each board in board_array}}
 						<li>{{#link-to 'board' board.secstr board.name}}{{bmy-string-bolder board.name searchcommand}}{{/link-to}}</li>
@@ -50,7 +50,7 @@
 						<li role="presentation" class="divider"></li>
 						<li role="presentation" class="dropdown-header" id="search_result_article"><span class="label label-danger">搜索文章</span> {{searchcommand}}</li>
 					</ul>
-				</div>
+				{{/view}}
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				{{#if is_login}}
