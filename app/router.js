@@ -31,6 +31,11 @@ Router.map(function() {
 	});
 
 	this.route('notifications');
+
+	this.route('search', { path: '/search' }, function() {
+		this.route('user', { path: '/user/:search_string' });
+		this.route('board', { path: '/board/:search_string' });
+	});
 });
 
 export default Router;
