@@ -1,0 +1,10 @@
+<div class="page-header">
+	<h2>搜索到的有关&nbsp;<strong>{{search_string}}</strong>&nbsp;的用户有：</h2>
+</div>
+
+<ul>
+{{#each userid in user_array}}
+	<li>{{#link-to 'user' userid}}{{userid}}{{/link-to}}</li>
+{{/each}}
+</ul>
+
