@@ -1,0 +1,10 @@
+<div class="page-header">
+	<h2>搜索到的有关&nbsp;<strong>{{search_string}}</strong>&nbsp;的版面有：</h2>
+</div>
+
+<ul>
+{{#each board in board_array}}
+	<li>{{#link-to 'board' board.secstr board.name}}{{board.name}}{{/link-to}}</li>
+{{/each}}
+</ul>
+
