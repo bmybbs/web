@@ -1,0 +1,16 @@
+{{#each article in articles}}
+<div {{bind-attr id=article.aid}} class="bmy-box-shadow thread-info-box">
+	<h4>{{#link-to 'article' article.secstr article.board article.aid}}{{article.title}}{{/link-to}}</h4>
+	{{bmy-article-length-bar article.aid article.th_size}}
+	<div>{{article.author}} 发表于 {{bmy-time-diff article.aid}}</div>
+	<div>
+		{{#if article.th_commenter}}
+		{{#each c in article.th_commenter}}
+			{{#link-to 'user' c}}{{bmy-user-avatar c 'xxxs'}}{{/link-to}}
+		{{/each}}
+		{{else}}
+		尚未有人评论
+		{{/if}}
+	</div>
+</div>
+{{/each}}
