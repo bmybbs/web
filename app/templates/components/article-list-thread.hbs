@@ -1,16 +1,14 @@
 {{#each article in articles}}
-<div {{bind-attr id=article.aid}} class="bmy-box-shadow thread-info-box">
-	<h4>{{#link-to 'article' article.secstr article.board article.aid}}{{article.title}}{{/link-to}}</h4>
+<div class="jumbotron shadow-z-2">
+	<h3>{{#link-to 'article' article.secstr article.board article.aid}}{{article.title}}{{/link-to}}</h3>
 	{{bmy-article-length-bar article.aid article.th_size}}
-	<div>{{article.author}} 发表于 {{bmy-time-diff article.aid}}</div>
-	<div>
-		{{#if article.th_commenter}}
+	<p>{{#link-to 'user' article.author}}{{article.author}}{{/link-to}} 发表于{{bmy-time-diff article.aid}} · {{article.th_num}} 篇帖子 · {{article.th_size}} 字节</p>
+	<p>
+	{{#if article.th_commenter}}
 		{{#each c in article.th_commenter}}
 			{{#link-to 'user' c}}{{bmy-user-avatar c 'xxxs'}}{{/link-to}}
 		{{/each}}
-		{{else}}
-		尚未有人评论
-		{{/if}}
-	</div>
+	{{/if}}
+	</p>
 </div>
 {{/each}}
