@@ -35,12 +35,6 @@ export default Ember.Handlebars.makeBoundHelper(function(aid, length) {
 	else
 		percent = 100;
 
-	var options = {
-		bg: bar_color,
-		target: document.getElementById(aid.toString()),
-		id: 'bar-' + aid.toString()
-	};
-
-	var bar = "<div style='height: 1px; width: " + percent + "%; background: " + bar_color + "'></div>";
+	var bar = "<div class='progress'><div class='progress-bar' style='width: " + percent + "%; background: " + bar_color + "'></div></div>";
 	return new Ember.Handlebars.SafeString(bar);
 });
