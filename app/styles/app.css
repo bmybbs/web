@@ -35,8 +35,7 @@ div.container { width: 960px; padding: 0px; }
 .bmy-toolbar		{ margin: 20px 0px; padding: 16px 0; border-top: #dadde3 1px solid; border-bottom: #dadde3 1px solid; }
 
 #bmy-body { padding-bottom: 100px; }
-#bmy-container { background-color: #FFFFFF; padding: 0 20px 50px; border-left: 1px solid #AAAAAA; border-right: 1px solid #AAAAAA; border-bottom: 1px solid #AAAAAA; }
-#bmy-container .row { width: 920px;}
+#bmy-container { width: 1002px; background-color: #FFFFFF; padding: 20px 20px 50px; border-left: 1px solid #AAAAAA; border-right: 1px solid #AAAAAA; border-bottom: 1px solid #AAAAAA; }
 
 /* login */
 .form-signin { max-width: 770px; padding-top: 30px; padding-bottom: 30px; background-color: #E6E6E6; }
