@@ -29,5 +29,11 @@ app.import('bower_components/moment/min/moment-with-locales.min.js');
 app.import('bower_components/bpopup/jquery.bpopup.min.js');
 app.import('bower_components/class-extender-ember-cli/index.js');
 app.import('bower_components/hashmap/hashmap.js');
+app.import('bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css');
+app.import('bower_components/bootstrap-material-design/dist/css/ripples.min.css');
+app.import('bower_components/bootstrap-material-design/dist/css/roboto.min.css');
+app.import('bower_components/bootstrap-material-design/dist/js/material.min.js');
+app.import('bower_components/bootstrap-material-design/dist/js/ripples.min.js');
+
 
 module.exports = app.toTree();
