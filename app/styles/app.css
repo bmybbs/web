@@ -34,6 +34,10 @@ div.container { width: 960px; padding: 0px; }
 .bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
 .bmy-toolbar		{ margin: 20px 0px; padding: 16px 0; border-top: #dadde3 1px solid; border-bottom: #dadde3 1px solid; }
 
+#bmy-body { padding-bottom: 100px; }
+#bmy-container { background-color: #FFFFFF; padding: 0 20px 50px; border-left: 1px solid #AAAAAA; border-right: 1px solid #AAAAAA; border-bottom: 1px solid #AAAAAA; }
+#bmy-container .row { width: 920px;}
+
 /* login */
 .form-signin { max-width: 770px; padding-top: 30px; padding-bottom: 30px; background-color: #E6E6E6; }
 .form-signin h2 { margin-bottom: 60px; }
@@ -61,10 +65,12 @@ div#img-nav a {margin-left: 5px; height: 10px; width: 10px; float: left; border:
 #img-wrapper { max-width: 770px; margin-top: 30px;}
 
 /* navbar style */
+.navbar { margin-bottom: 0px; height: 60px; }
 a.navbar-brand { padding: 10px;}
 .navbar-brand img { opacity: 0.9; filter:alpha(opacity=90); }
 .navbar-brand img:hover { opacity: 1; filter:alpha(opacity=100); }
 
+.navbar .navbar-form { margin-top: 0px; }
 .navbar input.form-control { width: 300px; border-right: none; }
 .navbar .form-group div { display: inline-block; margin-left: -42px; }
 .navbar .form-group span.btn { border: none; opacity: 1; filter:alpha(opacity=100); }
