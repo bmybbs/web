@@ -1,7 +1,7 @@
 import Ember from 'ember';
 /*global moment */
 
-export function BMYTime(date, format) {
+export function BMYTime(date) {
 	var t = moment(date * 1000);
 	return t.format('YYYY.MM.DD HH:mm');
 }
