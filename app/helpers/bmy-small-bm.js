@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Handlebars.makeBoundHelper(function(value, option){
+export default Ember.Handlebars.makeBoundHelper(function(value){
 	var out = "";
 	for(var i=4; i<value.length; i++) {
 		if(value[i] == null)
