@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{{bmy-user-avatar article.author 'xxxs'}}&nbsp;{{article.author}}&nbsp;发表于{{bmy-time article.aid}}
+	</div>
+	<div class="panel-body">
+		{{bmy-article-content article.content}}
+	</div>
+	<div class="panel-footer">
+	<button class="btn btn-success btn-raised" {{action 'reply'}}><span class="glyphicon glyphicon-comment"></span> 回复</button>
+	<button class="btn btn-success btn-raised"><span class="glyphicon glyphicon-envelope"></span> 回信</button>
+	<button class="btn btn-success btn-raised"><span class="glyphicon glyphicon-share-alt"></span> 转载</button>
+	<button class="btn btn-success btn-raised"><span class="glyphicon glyphicon-send"></span> 转寄</button>
+	<button class="btn btn-success btn-raised"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+	<button class="btn btn-success btn-raised"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+	</div>
+</div>
