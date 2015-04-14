@@ -32,8 +32,13 @@ app.import('bower_components/hashmap/hashmap.js');
 app.import('bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css');
 app.import('bower_components/bootstrap-material-design/dist/css/ripples.min.css');
 app.import('bower_components/bootstrap-material-design/dist/css/roboto.min.css');
+app.import('bower_components/bootstrap-material-design/dist/css/roboto.min.css.map', { destDir: 'assets' });
 app.import('bower_components/bootstrap-material-design/dist/js/material.min.js');
 app.import('bower_components/bootstrap-material-design/dist/js/ripples.min.js');
+app.import('bower_components/bootstrap-material-design/dist/fonts/RobotoDraftRegular.woff', { destDir: 'fonts' });
+app.import('bower_components/bootstrap-material-design/dist/fonts/RobotoDraftRegular.woff2', { destDir: 'fonts' });
+app.import('bower_components/bootstrap-material-design/dist/fonts/RobotoDraftBold.woff', { destDir: 'fonts' });
+app.import('bower_components/bootstrap-material-design/dist/fonts/RobotoDraftBold.woff2', { destDir: 'fonts' });
 
 
 module.exports = app.toTree();
