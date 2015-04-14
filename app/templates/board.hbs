@@ -73,8 +73,31 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
-		{{article-list-thread articles=articlelist}}
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{{#link-to 'section' header.secstr}}{{secname}}{{/link-to}}&nbsp;&gt;&nbsp;{{#link-to 'board' header.secstr header.name}}{{header.zh_name}}({{header.name}}){{/link-to}}
+					{{#if header.is_fav}}
+						<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="已收藏"><span class="glyphicon glyphicon-star"></span></button>
+					{{else}}
+						<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="加入收藏"><span class="glyphicon glyphicon-star-empty"></span></button>
+					{{/if}}
+				</div>
+				<div class="panel-body">
+					<div>版主&nbsp;/{{bmy-big-bm header.bm}}</div>
+					{{#if hasSmallBM}}
+					<div>小版主&nbsp;/{{bmy-small-bm header.bm}}</div>
+					{{/if}}
+					<ul class="list-unstyled">
+						<li class="board-header-status-item">人气值&nbsp;<span class="badge">{{header.score}}</span></li>
+						<li class="board-header-status-item">今日新帖&nbsp;<span class="badge">{{header.today_new}}</span></li>
+						<li class="board-header-status-item">在线&nbsp;<span class="badge">{{header.inboard_num}}</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+		{{outlet}}
 		</div>
 	</div>
 </div>

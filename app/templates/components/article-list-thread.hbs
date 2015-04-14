@@ -1,6 +1,6 @@
 {{#each article in articles}}
 <div class="jumbotron shadow-z-2">
-	<h3>{{#link-to 'article' article.secstr article.board article.aid}}{{article.title}}{{/link-to}}</h3>
+	<h3>{{#link-to 'board.thread' article.secstr article.board article.aid}}{{article.title}}{{/link-to}}</h3>
 	{{bmy-article-length-bar article.aid article.th_size}}
 	<p>{{#link-to 'user' article.author}}{{article.author}}{{/link-to}} 发表于{{bmy-time-diff article.aid}} · {{article.th_num}} 篇帖子 · {{article.th_size}} 字节</p>
 	<p>

@@ -9,9 +9,12 @@ Router.map(function() {
 	this.resource('index', { path: '/' });
 	this.resource('dashboard');
 	this.route('section', { path: '/section/:section_id' });
-	this.route('board', { path: '/section/:section_id/:board_id' });
+	this.route('board', { path: '/section/:section_id/:board_id' }, function() {
+		this.route('index', { path: '/' });
+		this.route('thread', { path: '/:thread_id' });
+	});
 
-	this.route('article', { path: '/section/:section_id/:board_id/:article_id' });
+	this.route('article', { path: '/section/:section_id/:board_id/article/:article_id' });
 	this.route('article-reply', { path: '/section/:section_id/:board_id/:article_id/reply' });
 	this.route('article-edit', { path: '/section/:section_id/:board_id/:article_id/edit' });
 	this.route('article-new', { path: '/section/:section_id/:board_id/new' });
